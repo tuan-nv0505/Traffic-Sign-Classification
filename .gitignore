@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+dataset/
+
+.DS_Store
+
 # Distribution / packaging
 .Python
 build/
@@ -196,7 +200,7 @@ cython_debug/
 
 # Cursor
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
+#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive build_dataset
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
