@@ -1,13 +1,66 @@
 import math
 import torch
-import torch.nn.functional as F
 import torch.nn as nn
+import torch.nn.functional as F
 from einops import repeat
 
 from models.conv import SE
 
+def cross_scan(x: torch.Tensor):
+    B, C, H, W = x.shape
+    L = H * W
 
-class VSSBlock(nn.Module):
+    scanned = torch.stack([
+        x.view(B, C, L),
+        x.view(B, C, L).flip(dims=[-1]),
+        x.permute(0, 1, 3, 2).contiguous().view(B, C, L),
+        x.permute(0, 1, 3, 2).contiguous().view(B, C, L).flip(dims=[-1])
+    ], dim=1)
+
+    return scanned
+
+def cross_merge(y: torch.Tensor, H, W):
+    B, _, C, L = y.shape
+    y1, y2, y3, y4 = y.chunk(4, 1)
+
+    y1 = y1.squeeze(dim=1)
+    y2 = y2.squeeze(dim=1).flip(dims=[-1])
+    y3 = y3.squeeze(dim=1).view(B, C, W, H).permute(0, 1, 3, 2).contiguous().view(B, C, L)
+    y4 = y4.squeeze(dim=1).flip(dims=[-1]).view(B, C, W, H).permute(0, 1, 3, 2).contiguous().view(B, C, L)
+
+    return (y1 + y2 + y3 + y4).view(B, C, H, W).contiguous()
+
+def selective_scan(
+        x: torch.Tensor,
+        x_projection_weight: torch.Tensor, # (K, 2 * d_state + delta_rank, d_inner)
+        delta_projection_weight: torch.Tensor, # (K, d_inner, d_rank)
+        delta_projection_bias: torch.Tensor, # (K, d_inner)
+        A_log: torch.Tensor, # (K, d_inner, d_state)
+        Ds: torch.Tensor, # (K, d_inner)
+        nrows = -1,
+        delta_softplus = True,
+        to_dtype = True
+):
+    x_scanned = cross_scan(x)
+    B, K, C, L = x_scanned.shape
+    _, _, R = delta_projection_weight.shape
+    d_state = A_log.shape[-1]
+
+    delta_b_c = x_scanned.permute(0, 1, 3, 2) @ x_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
+    delta_b_c = delta_b_c.permute(0, 1, 3, 2)
+    delta, b, c = delta_b_c.split((R, d_state, d_state), dim=2)
+    delta = delta.permute(0, 1, 3, 2) @ delta_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
+    delta = delta.permute(0, 1, 3, 2) + delta_projection_bias[None, :, :, None]
+
+    h = torch.zeros(size=(B, K, C, d_state), device=x.device, dtype=x.dtype)
+    ys = []
+
+
+
+    return x
+
+
+class SS2D(nn.Module):
     def __init__(self,
                  # basic dims ===========
                  d_model=96,
@@ -15,7 +68,6 @@ class VSSBlock(nn.Module):
                  ssm_ratio=2,
                  ssm_rank_ratio=2,
                  delta_rank="auto",
-                 activation_layer=nn.SiLU,
                  # conv_dw ===============
                  d_conv=3,
                  conv_bias=True,
@@ -39,8 +91,6 @@ class VSSBlock(nn.Module):
 
         self.in_projection = nn.Linear(in_features=d_model, out_features=d_expand * 2, bias=bias)
 
-        self.activation_layer = activation_layer
-
         self.conv2d = nn.Conv2d(
             in_channels=d_expand,
             out_channels=d_expand,
@@ -59,19 +109,29 @@ class VSSBlock(nn.Module):
             nn.Linear(in_features=d_inner, out_features=self.delta_rank + self.d_state * 2, bias=False)
             for _ in range(4)
         ]
-        self.x_projection_weight = nn.Parameter(torch.stack([k.weight for k in self.x_projection], dim=1))
+        # x_projection_weight (K, 2 * d_state + delta_rank, d_inner)
+        self.x_projection_weight = nn.Parameter(torch.stack([k.weight for k in self.x_projection], dim=0))
+        # print(f"shape x_projection_weight: (K, 2 * d_state, d_inner) {self.x_projection_weight.shape}")
         del self.x_projection
 
         self.delta_projection = [
             self.delta_init(self.delta_rank, d_inner)
             for _ in range(4)
         ]
+        # delta_projection_weight (K, d_inner, delta_rank)
         self.delta_projection_weight = nn.Parameter(torch.stack([k.weight for k in self.delta_projection], dim=0))
+        # print(f"shape delta_projection_weight: (K, d_inner, delta_rank) {self.delta_projection_weight.shape}")
+        # delta_projection_bias (K, d_inner)
         self.delta_projection_bias = nn.Parameter(torch.stack([k.bias for k in self.delta_projection], dim=0))
+        # print(f"shape delta_projection_bias: (K, d_inner) {self.delta_projection_bias.shape}")
         del self.delta_projection
 
+        # A_log (K, d_inner, d_state)
         self.A_log = self.A_log_init(d_state, d_inner)
+        # print(f"shape A_log: (K, d_inner, d_state) {self.A_log.shape}")
+        # Ds (K, d_inner)
         self.Ds = self.D_init(d_inner)
+        # print(f"shape Ds: (K, d_inner) {self.Ds.shape}")
 
         self.out_projection = nn.Linear(d_expand, d_model, bias=bias)
         self.effn = EFFN(d_expand)
@@ -79,8 +139,7 @@ class VSSBlock(nn.Module):
 
         if simple_init:
             self.Ds = nn.Parameter(torch.ones((self.K2 * d_inner)))
-            self.A_logs = nn.Parameter(
-                torch.randn((4 * d_inner, self.d_state)))
+            self.A_log = nn.Parameter(torch.randn((4 * d_inner, self.d_state)))
             self.delta_projection_weight = nn.Parameter(torch.randn((4, d_inner, self.dt_rank)))
             self.delta_projection_bias = nn.Parameter(torch.randn((4, d_inner)))
 
@@ -117,11 +176,7 @@ class VSSBlock(nn.Module):
 
     @staticmethod
     def A_log_init(d_state, d_inner):
-        A = repeat(
-            torch.arange(1, d_state + 1, dtype=torch.float32),
-            "n -> d n",
-            d=d_inner,
-        ).contiguous()
+        A = repeat(torch.arange(1, d_state + 1, dtype=torch.float32),"n -> d n", d=d_inner).contiguous()
         A_log = torch.log(A)
         A_log = repeat(A_log, "d n -> k d n", k=4)
         A_log = nn.Parameter(A_log)
@@ -136,16 +191,42 @@ class VSSBlock(nn.Module):
         D._no_weight_decay = True
         return D
 
+    def forward_ss2d(self, x: torch.Tensor):
+        if self.ssm_low_rank:
+            x = self.in_rank(x)
+
+        selective_scan(
+            x=x,
+            x_projection_weight=self.x_projection_weight,
+            delta_projection_weight=self.delta_projection_weight,
+            delta_projection_bias=self.delta_projection_bias,
+            A_log=self.A_log,
+            Ds=self.Ds
+        )
+
+        return x
+
+    def forward(self, x: torch.Tensor):
+        xz = x.permute(0, 2, 3, 1)
+        xz = self.in_projection(xz)
+        x, z = xz.chunk(2, dim=-1)
+        x, z = x.permute(0, 3, 1, 2), z.permute(0, 3, 1, 2)
+        x = F.silu(self.conv2d(x))
+        x = self.forward_ss2d(x)
+
+        print(x.shape)
+
+
 
 class PathMerging2D(nn.Module):
     pass
 
 class EFFN(nn.Module):
     def __init__(self, in_channels):
-        super(EFFN, self).__init__()
+        super().__init__()
 
         self.conv1 = nn.Sequential(
-            nn.Conv2d(in_channels=in_channels, out_channels=in_channels * 2, kernel_size=1, padding=0),
+            nn.Conv2d(in_channels=in_channels, out_channels=in_channels * 2, kernel_size=1),
             nn.BatchNorm2d(num_features=in_channels * 2),
             nn.ReLU()
         )
@@ -156,41 +237,18 @@ class EFFN(nn.Module):
             nn.ReLU()
         )
 
-        self.conv3 = nn.Conv2d(in_channels=in_channels * 2, out_channels=in_channels // 2, kernel_size=1, padding=0)
+        self.conv3 = nn.Conv2d(in_channels=in_channels * 2, out_channels=in_channels // 2,kernel_size=1)
 
         self.se = SE(in_channels=in_channels // 2, reduction=2)
 
     def forward(self, x):
-        x = x.permute(0, 3, 1, 2)
         x = self.conv1(x)
         x = self.conv2(x)
         x = self.conv3(x)
         x = self.se(x)
-        x = x.permute(0, 2, 3, 1)
         return x
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    x = torch.randn((8, 96, 32, 32))
+    model = SS2D(ssm_ratio=2, ssm_rank_ratio=2)
+    model(x)
