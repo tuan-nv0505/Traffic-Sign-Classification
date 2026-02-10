@@ -116,5 +116,8 @@ class ConvNet(nn.Module):
         return conv_net_out
 
 if __name__ == '__main__':
+    x = torch.randn(4, 3, 32, 32)
     net = ConvNet()
-    print(summary(net, (16, 3, 128, 128)))
+    out = net(x)
+    print(out.shape)
+

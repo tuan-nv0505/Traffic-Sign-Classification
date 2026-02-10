@@ -1,8 +1,12 @@
 import math
+from functools import partial
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from einops import repeat
+from timm.layers import DropPath
+from torchinfo import summary
 
 from models.conv import SE
 
@@ -41,6 +45,7 @@ def selective_scan(
         delta_softplus = True,
         to_dtype = True
 ):
+    _, _, H, W = x.shape
     x_scanned = cross_scan(x)
     B, K, C, L = x_scanned.shape
     _, _, R = delta_projection_weight.shape
@@ -49,15 +54,27 @@ def selective_scan(
     delta_b_c = x_scanned.permute(0, 1, 3, 2) @ x_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
     delta_b_c = delta_b_c.permute(0, 1, 3, 2)
     delta, b, c = delta_b_c.split((R, d_state, d_state), dim=2)
+
     delta = delta.permute(0, 1, 3, 2) @ delta_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
     delta = delta.permute(0, 1, 3, 2) + delta_projection_bias[None, :, :, None]
+    if delta_softplus:
+        delta = F.softplus(delta)
 
     h = torch.zeros(size=(B, K, C, d_state), device=x.device, dtype=x.dtype)
     ys = []
 
+    for t in range(L):
+        x_scanned_t = x_scanned[:, :, :, t]
+        delta_t = delta[:, :, :, t]
+        b_t = b[:, :, :, t]
+        c_t = c[:, :, :, t]
 
+        A_t = torch.exp(-(A_log * delta_t.unsqueeze(-1)))
+        h = A_t * h + x_scanned_t.unsqueeze(-1) * b_t.unsqueeze(2)
+        y = h @ c_t.unsqueeze(-1)
+        ys.append(y.squeeze(-1) + Ds)
 
-    return x
+    return cross_merge(torch.stack(ys, dim=-1), H, W)
 
 
 class SS2D(nn.Module):
@@ -81,7 +98,7 @@ class SS2D(nn.Module):
                  delta_scale=1.0,
                  delta_init_floor=1e-4,
                  simple_init=False,
-                 ):
+    ):
         super().__init__()
         d_expand = d_model * ssm_ratio
         d_inner = int(min(ssm_ratio, ssm_rank_ratio) * d_model) if ssm_rank_ratio > 0 else d_expand
@@ -115,7 +132,15 @@ class SS2D(nn.Module):
         del self.x_projection
 
         self.delta_projection = [
-            self.delta_init(self.delta_rank, d_inner)
+            self.delta_init(
+                delta_rank=self.delta_rank,
+                d_inner=d_inner,
+                delta_min=delta_min,
+                delta_max=delta_max,
+                delta_init=delta_init,
+                delta_scale=delta_scale,
+                delta_init_floor=delta_init_floor
+            )
             for _ in range(4)
         ]
         # delta_projection_weight (K, d_inner, delta_rank)
@@ -134,6 +159,7 @@ class SS2D(nn.Module):
         # print(f"shape Ds: (K, d_inner) {self.Ds.shape}")
 
         self.out_projection = nn.Linear(d_expand, d_model, bias=bias)
+        self.norm = nn.LayerNorm(d_expand)
         self.effn = EFFN(d_expand)
         self.dropout = nn.Dropout(dropout) if dropout > 0. else nn.Identity()
 
@@ -178,7 +204,7 @@ class SS2D(nn.Module):
     def A_log_init(d_state, d_inner):
         A = repeat(torch.arange(1, d_state + 1, dtype=torch.float32),"n -> d n", d=d_inner).contiguous()
         A_log = torch.log(A)
-        A_log = repeat(A_log, "d n -> k d n", k=4)
+        A_log = repeat(A_log, "d n -> k d n", k=4).clone().contiguous()
         A_log = nn.Parameter(A_log)
         A_log._no_weight_decay = True
         return A_log
@@ -186,7 +212,7 @@ class SS2D(nn.Module):
     @staticmethod
     def D_init(d_inner):
         D = torch.ones(d_inner)
-        D = repeat(D, "n1 -> k n1", k=4)
+        D = repeat(D, "n1 -> k n1", k=4).clone().contiguous()
         D = nn.Parameter(D)
         D._no_weight_decay = True
         return D
@@ -195,7 +221,7 @@ class SS2D(nn.Module):
         if self.ssm_low_rank:
             x = self.in_rank(x)
 
-        selective_scan(
+        x = selective_scan(
             x=x,
             x_projection_weight=self.x_projection_weight,
             delta_projection_weight=self.delta_projection_weight,
@@ -203,6 +229,9 @@ class SS2D(nn.Module):
             A_log=self.A_log,
             Ds=self.Ds
         )
+
+        if self.ssm_low_rank:
+            x = self.out_rank(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
         return x
 
@@ -213,13 +242,37 @@ class SS2D(nn.Module):
         x, z = x.permute(0, 3, 1, 2), z.permute(0, 3, 1, 2)
         x = F.silu(self.conv2d(x))
         x = self.forward_ss2d(x)
+        x = self.norm(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
 
-        print(x.shape)
+        return self.effn(x * z)
 
 
 
-class PathMerging2D(nn.Module):
-    pass
+class PatchMerging2D(nn.Module):
+    def __init__(self, dim, out_dim=-1, norm_layer=nn.LayerNorm):
+        super().__init__()
+        self.dim = dim
+        self.reduction = nn.Linear(4 * dim, (2 * dim) if out_dim < 0 else out_dim, bias=False)
+        self.norm = norm_layer(4 * dim)
+
+    @staticmethod
+    def _patch_merging_pad(x: torch.Tensor):
+        H, W, _ = x.shape[-3:]
+        if (W % 2 != 0) or (H % 2 != 0):
+            x = F.pad(x, (0, 0, 0, W % 2, 0, H % 2))
+        x0 = x[..., 0::2, 0::2, :]  # ... H/2 W/2 C
+        x1 = x[..., 1::2, 0::2, :]  # ... H/2 W/2 C
+        x2 = x[..., 0::2, 1::2, :]  # ... H/2 W/2 C
+        x3 = x[..., 1::2, 1::2, :]  # ... H/2 W/2 C
+        x = torch.cat([x0, x1, x2, x3], -1)  # ... H/2 W/2 4*C
+        return x
+
+    def forward(self, x):
+        x = x.permute(0, 2, 3, 1)
+        x = self._patch_merging_pad(x)
+        x = self.norm(x)
+        x = self.reduction(x)
+        return x.permute(0, 3, 1, 2)
 
 class EFFN(nn.Module):
     def __init__(self, in_channels):
@@ -245,10 +298,108 @@ class EFFN(nn.Module):
         x = self.conv1(x)
         x = self.conv2(x)
         x = self.conv3(x)
-        x = self.se(x)
+        x = x + self.se(x)
         return x
 
+class Mlp(nn.Module):
+    def __init__(self, in_features, hidden_features=None, out_features=None, act_layer=nn.GELU, drop=0., channels_first=False):
+        super().__init__()
+        out_features = out_features or in_features
+        hidden_features = hidden_features or in_features
+
+        Linear = partial(nn.Conv2d, kernel_size=1, padding=0) if channels_first else nn.Linear
+        self.fc1 = Linear(in_features, hidden_features)
+        self.act = act_layer()
+        self.fc2 = Linear(hidden_features, out_features)
+        self.drop = nn.Dropout(drop)
+
+    def forward(self, x):
+        x = x.permute(0, 2, 3, 1)
+        x = self.fc1(x)
+        x = self.act(x)
+        x = self.drop(x)
+        x = self.fc2(x)
+        x = self.drop(x)
+        x = x.permute(0, 3, 1, 2)
+        return x
+
+
+class VSSBlock(nn.Module):
+    def __init__(
+            self,
+            hidden_dim,
+            drop_path=0.0,
+            norm_layer = partial(nn.LayerNorm, eps=1e-6),
+            # =============================
+            ssm_d_state= 16,
+            ssm_ratio=2,
+            ssm_rank_ratio=2,
+            ssm_delta_rank="auto",
+            ssm_conv=3,
+            ssm_conv_bias=True,
+            ssm_drop_rate=0,
+            ssm_simple_init=False,
+            # =============================
+            mlp_ratio=4.0,
+            mlp_act_layer=nn.GELU,
+            mlp_drop_rate: float = 0.0,
+            **kwargs,
+    ):
+        super().__init__()
+        self.norm = norm_layer(hidden_dim)
+        self.op = SS2D(
+            d_model=hidden_dim,
+            d_state=ssm_d_state,
+            ssm_ratio=ssm_ratio,
+            ssm_rank_ratio=ssm_rank_ratio,
+            delta_rank=ssm_delta_rank,
+            # ==========================
+            d_conv=ssm_conv,
+            conv_bias=ssm_conv_bias,
+            # ==========================
+            dropout=ssm_drop_rate,
+            # bias=False,
+            # ==========================
+            # dt_min=0.001,
+            # dt_max=0.1,
+            # dt_init="random",
+            # dt_scale="random",
+            # dt_init_floor=1e-4,
+            simple_init=ssm_simple_init,
+        )
+        self.drop_path = DropPath(drop_path)
+
+        self.mlp_branch = mlp_ratio > 0
+        if self.mlp_branch:
+            self.norm2 = norm_layer(hidden_dim)
+            mlp_hidden_dim = int(hidden_dim * mlp_ratio)
+            self.mlp = Mlp(
+                in_features=hidden_dim,
+                hidden_features=mlp_hidden_dim,
+                act_layer=mlp_act_layer,
+                drop=mlp_drop_rate,
+                channels_first=False
+            )
+
+    def forward(self, input: torch.Tensor):
+        x = input + self.drop_path(self.op(self.norm(input.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)))
+        if self.mlp_branch:
+            x = x + self.drop_path(self.mlp(self.norm2(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2))) # FFN
+        return x
+
+def check_parameters(model):
+    print(f"{'Parameter Name':<40} | {'Shape':<25} | {'Count':<10}")
+    print("-" * 80)
+    total_params = 0
+    for name, param in model.named_parameters():
+        param_count = param.numel()
+        print(f"{name:<40} | {str(list(param.shape)):<25} | {param_count:<10,}")
+        total_params += param_count
+    print("-" * 80)
+    print(f"{'TOTAL':<40} | {'':<25} | {total_params:<10,}")
+
+
 if __name__ == '__main__':
-    x = torch.randn((8, 96, 32, 32))
-    model = SS2D(ssm_ratio=2, ssm_rank_ratio=2)
-    model(x)
+    x = torch.randn((8, 3, 32, 32))
+    model = VSSBlock(hidden_dim=3)
+    check_parameters(model)
