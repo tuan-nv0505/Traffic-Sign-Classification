@@ -5,7 +5,7 @@ import torch
 from typing import Type
 from torchvision import transforms
 import numpy as np
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, KFold
 from datasets.gtsrb_dataset import GTSRBDataset
 from models.super_mamba import SuperMamba
 from utils import get_args, plot_confusion_matrix
@@ -19,10 +19,11 @@ BATCH_SIZE = args.batch
 LR = args.lr
 DEVICE = torch.device(args.device)
 TRAIN_DATA = args.train_data
-FOLD = args.fold
+FOLDS = args.folds
 WORKERS = args.workers
 TRAINED = args.trained
 LOGGING = args.logging
+LOAD_CHECKPOINT = args.load_checkpoint
 TRANSFORMS = transforms.Compose([
     transforms.ToTensor(),
     transforms.Resize((32, 32)),
@@ -33,13 +34,26 @@ def train(Dataset: Type[GTSRBDataset]):
     train_dataset = Dataset(path=TRAIN_DATA, transforms=TRANSFORMS)
     indices = np.arange(len(train_dataset))
     labels = np.array(train_dataset.labels)
-    skf = StratifiedKFold(n_splits=FOLD, shuffle=True, random_state=42)
+    skf = StratifiedKFold(n_splits=FOLDS, shuffle=True, random_state=42)
 
-    for fold, (train_idx, val_idx) in enumerate(skf.split(indices, labels)):
-        print(f"\n" + "=" * 20 + f" TRAINING FOLD {fold + 1}/{FOLD} " + "=" * 20)
+    folds = [(train_idx, validation_idx) for train_idx, validation_idx in skf.split(indices, labels)]
 
-        fold_trained_path = os.path.join(TRAINED, f"fold_{fold}")
-        fold_logging_path = os.path.join(LOGGING, f"fold_{fold}")
+    start_fold = 0
+    if os.path.exists(TRAINED):
+        trained_folds = [
+            int(d.replace("fold_", ""))
+            for d in os.listdir(TRAINED)
+            if d.startswith("fold_") and os.path.isdir(os.path.join(TRAINED, d))
+        ]
+        if len(trained_folds) > 0:
+            start_fold = max(trained_folds) - 1
+
+    for fold in range(start_fold, FOLDS):
+        print(f"\n" + "=" * 20 + f" TRAINING FOLD {fold + 1}/{FOLDS} " + "=" * 20)
+
+        train_idx, validation_idx = folds[fold]
+        fold_trained_path = os.path.join(TRAINED, f"fold_{fold + 1}")
+        fold_logging_path = os.path.join(LOGGING, f"fold_{fold + 1}")
         os.makedirs(fold_trained_path, exist_ok=True)
         os.makedirs(fold_logging_path, exist_ok=True)
 
@@ -52,7 +66,7 @@ def train(Dataset: Type[GTSRBDataset]):
         )
 
         validation_dataloader = DataLoader(
-            dataset=Subset(train_dataset, val_idx),
+            dataset=Subset(train_dataset, validation_idx),
             batch_size=BATCH_SIZE,
             shuffle=False,
             num_workers=WORKERS,
@@ -69,18 +83,19 @@ def train(Dataset: Type[GTSRBDataset]):
         start_epoch = 0
         best_accuracy = 0
 
-        if os.path.exists(checkpoint_path) and args.load_checkpoint:
-            try:
-                checkpoint = torch.load(checkpoint_path, map_location=DEVICE)
-                model.load_state_dict(checkpoint["model_state_dict"])
-                optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
-                start_epoch = checkpoint["epoch"]
-                best_accuracy = checkpoint.get("best_accuracy", 0)
-                print(f"Resume Fold {fold + 1} from epoch {start_epoch}")
-            except Exception as ex:
-                print(f"Load checkpoint failed for fold {fold}: {ex}")
+        if os.path.exists(checkpoint_path) and LOAD_CHECKPOINT:
+            if os.path.exists(checkpoint_path):
+                try:
+                    checkpoint = torch.load(checkpoint_path, map_location=DEVICE, weights_only=True)
+                    model.load_state_dict(checkpoint["model_state_dict"])
+                    optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+                    start_epoch = checkpoint["epoch"]
+                    best_accuracy = checkpoint.get("best_accuracy", 0)
+                    print(f"Resume Fold {fold + 1} from epoch {start_epoch + 1}")
+                except Exception as ex:
+                    print(f"Load checkpoint failed for fold {fold + 1}: {ex}")
         else:
-            print(f"Start fresh training for Fold {fold + 1}")
+            print(f"Start training for Fold {fold + 1}")
 
         num_iterations = len(train_dataloader)
         writer = SummaryWriter(fold_logging_path)
@@ -88,6 +103,7 @@ def train(Dataset: Type[GTSRBDataset]):
         for epoch in range(start_epoch, EPOCHS):
             progress_bar = tqdm(train_dataloader)
             model.train()
+            total_loss = 0.0
             for i, (images, labels_batch) in enumerate(progress_bar):
                 images, labels_batch = images.to(DEVICE), labels_batch.to(DEVICE)
 
@@ -98,11 +114,13 @@ def train(Dataset: Type[GTSRBDataset]):
                 optimizer.step()
 
                 progress_bar.set_description(
-                    f"Fold [{fold + 1}/{FOLD}] - "
+                    f"Fold [{fold + 1}/{FOLDS}] - "
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
                     f"Loss: {loss.item():.4f}"
                 )
-                writer.add_scalar("Train/Loss", loss.item(), epoch * num_iterations + i)
+                total_loss += loss.item()
+                writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
+            print(f"--> Loss for epoch {epoch + 1:.4f} : {total_loss / num_iterations}")
 
             model.eval()
             list_prediction = []
@@ -133,14 +151,23 @@ def train(Dataset: Type[GTSRBDataset]):
             torch.save(checkpoint, checkpoint_path)
             if is_best:
                 torch.save(checkpoint, best_checkpoint_path)
-                print(f"--> New Best Accuracy for Fold {fold + 1}!")
+                print(f"--> New Best Accuracy for Fold {fold + 1}")
 
-            writer.add_scalar("Valuate/Accuracy", accuracy, epoch + 1)
+            writer.add_scalar(f"Fold {fold + 1}/Validation/Accuracy", accuracy, epoch + 1)
             plot_confusion_matrix(
                 writer=writer,
                 cm=confusion_matrix(list_label, list_prediction),
                 class_names=train_dataset.categories,
-                epoch=epoch + 1
+                epoch=epoch + 1,
+                mode="precision",
+            )
+
+            plot_confusion_matrix(
+                writer=writer,
+                cm=confusion_matrix(list_label, list_prediction),
+                class_names=train_dataset.categories,
+                epoch=epoch + 1,
+                mode="recall",
             )
 
         writer.close()
