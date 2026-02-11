@@ -8,20 +8,20 @@ def get_args():
     parser = ArgumentParser()
 
     parser.add_argument("--batch", type=int, default=32)
-    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--train_data", type=str, default="data/gtsrb/Training")
     parser.add_argument("--test_data", type=str, default="data/gtsrb/Final_Test")
     parser.add_argument("--folds", type=int, default=5)
-    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--trained", type=str, default="trained")
     parser.add_argument("--logging", type=str, default="tensorboard")
     parser.add_argument("--load_checkpoint", action="store_true")
 
     return parser.parse_args()
 
-def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall"):
+def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=None):
     """
     Returns a matplotlib figure containing the plotted confusion matrix.
 
@@ -30,21 +30,24 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall"):
        class_names (array, shape = [n]): String names of the integer classes
        mode (string): 'recall' or 'precision'
     """
-
     cm = cm.astype(float)
 
     if mode == "recall":
         # TP / (TP + FN)
-        cm_norm = cm / cm.sum(axis=1, keepdims=True)
+        denom = cm.sum(axis=1, keepdims=True)
         title = "Confusion Matrix (Recall)"
+
     elif mode == "precision":
         # TP / (TP + FP)
-        cm_norm = cm / cm.sum(axis=0, keepdims=True)
+        denom = cm.sum(axis=0, keepdims=True)
         title = "Confusion Matrix (Precision)"
+
     else:
         raise ValueError("mode phải là 'recall' hoặc 'precision'")
 
-    cm_norm = np.nan_to_num(cm_norm)
+    denom[denom == 0] = 1
+
+    cm_norm = cm / denom
     cm_norm = np.round(cm_norm, 2)
 
     figure = plt.figure(figsize=(20, 20))
@@ -56,7 +59,7 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall"):
     plt.xticks(tick_marks, class_names, rotation=45)
     plt.yticks(tick_marks, class_names)
 
-    threshold = cm_norm.max() / 2.0
+    threshold = cm_norm.max() / 2.0 if cm_norm.max() > 0 else 0.5
 
     for i in range(cm_norm.shape[0]):
         for j in range(cm_norm.shape[1]):
@@ -69,4 +72,7 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall"):
     plt.ylabel("True label")
     plt.xlabel("Predicted label")
 
-    writer.add_figure(f"confusion_matrix/{mode}", figure, epoch)
+    if fold:
+        writer.add_figure(f"Fold {fold}/Confusion Matrix/{mode}", figure, epoch)
+    else:
+        writer.add_figure(f"Confusion Matrix/{mode}", figure, epoch)
