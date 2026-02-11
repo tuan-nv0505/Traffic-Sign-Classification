@@ -21,7 +21,7 @@ def get_args():
 
     return parser.parse_args()
 
-def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=None):
+def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=None, train=True):
     """
     Returns a matplotlib figure containing the plotted confusion matrix.
 
@@ -72,7 +72,8 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=No
     plt.ylabel("True label")
     plt.xlabel("Predicted label")
 
-    if fold:
-        writer.add_figure(f"Fold {fold}/Confusion Matrix/{mode}", figure, epoch)
-    else:
-        writer.add_figure(f"Confusion Matrix/{mode}", figure, epoch)
+    s1 = f"Fold {fold}/" if fold is not None else ""
+    s2 = "Validation" if train else "Test"
+
+    tag = f"{s1}Confusion Matrix {s2}/{mode}"
+    writer.add_figure(tag, figure, epoch)

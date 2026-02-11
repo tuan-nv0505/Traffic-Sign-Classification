@@ -19,6 +19,7 @@ BATCH_SIZE = args.batch
 LR = args.lr
 DEVICE = torch.device(args.device)
 TRAIN_DATA = args.train_data
+TEST_DATA = args.test_data
 FOLDS = args.folds
 WORKERS = args.workers
 TRAINED = args.trained
@@ -47,6 +48,16 @@ def train(Dataset: Type[GTSRBDataset]):
         ]
         if len(trained_folds) > 0:
             start_fold = max(trained_folds) - 1
+
+    test_dataset = Dataset(root=TEST_DATA, transforms=TRANSFORMS, train=False)
+    test_dataloader = DataLoader(
+        dataset=test_dataset,
+        batch_size=BATCH_SIZE,
+        shuffle=False,
+        num_workers=WORKERS,
+        drop_last=False,
+    )
+    state_dict_test = None
 
     for fold in range(start_fold, FOLDS):
         print(f"\n" + "=" * 20 + f" TRAINING FOLD {fold + 1}/{FOLDS} " + "=" * 20)
@@ -152,6 +163,7 @@ def train(Dataset: Type[GTSRBDataset]):
             if is_best:
                 torch.save(checkpoint, best_checkpoint_path)
                 print(f"--> New Best Accuracy for Fold {fold + 1}")
+                state_dict_test = model.state_dict()
 
             writer.add_scalar(f"Fold {fold + 1}/Validation/Accuracy", accuracy, epoch + 1)
             plot_confusion_matrix(
@@ -169,6 +181,37 @@ def train(Dataset: Type[GTSRBDataset]):
                 epoch=epoch + 1,
                 mode="recall",
             )
+
+        model.load_state_dict(state_dict_test)
+        model.eval()
+        list_prediction = []
+        list_label = []
+        for images, labels_val in validation_dataloader:
+            images = images.to(DEVICE)
+            labels_val = labels_val.to(DEVICE)
+
+            with torch.no_grad():
+                outputs = model(images)
+            list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
+            list_label.extend(labels_val.cpu().numpy())
+
+        plot_confusion_matrix(
+            writer=writer,
+            cm=confusion_matrix(list_label, list_prediction),
+            class_names=train_dataset.categories,
+            epoch=0,
+            mode="precision",
+            train=False
+        )
+
+        plot_confusion_matrix(
+            writer=writer,
+            cm=confusion_matrix(list_label, list_prediction),
+            class_names=train_dataset.categories,
+            epoch=0,
+            mode="recall",
+            train=False
+        )
 
         writer.close()
 

@@ -20,8 +20,8 @@ class GTSRBDataset(data.Dataset):
             self.path_images = df.apply(lambda row: os.path.join(root, "Final_Test", "Images", row["Filename"]), axis=1).values
 
         self.labels = df["ClassId"].astype(int).values
-        self.categories = sorted(set(self.labels))
         self.stats = df["ClassId"].astype(int).value_counts().sort_index().to_dict()
+        self.categories = list(self.stats.keys())
 
     def plot_statistics(self):
         keys = list(self.stats.keys())
@@ -55,5 +55,4 @@ if __name__ == '__main__':
         ToTensor()
     ])
     dataset = GTSRBDataset(root=path, transforms=transforms, train=False)
-    dataset.plot_statistics()
 
