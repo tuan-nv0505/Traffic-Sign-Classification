@@ -60,15 +60,15 @@ def selective_scan_v1(
     if delta_softplus:
         delta = F.softplus(delta)
 
-    delta_A = delta[:, :, :, :, None] * A_log[None, :, :, None, :]
-    phi = torch.exp(torch.cumsum(delta_A, dim=3))
+    delta_A = (delta[:, :, :, :, None] * A_log[None, :, :, None, :]).to(torch.float32)
+    phi = torch.exp(-torch.cumsum(delta_A, dim=3))
     delta_b_x_scanned = (
             delta[:, :, :, None, :] *
             b[:, :, None, :, :] *
             x_scanned[:, :, :, None, :]
     ).permute(0, 1, 2, 4, 3).contiguous()
 
-    h = phi * torch.cumsum(delta_b_x_scanned / phi, dim=3)
+    h = phi * torch.cumsum(delta_b_x_scanned / (phi + 1e-12), dim=3)
     y = (h.permute(0, 1, 3, 2, 4) @ c.permute(0, 1, 3, 2).unsqueeze(-1)).squeeze(-1).permute(0, 1, 3, 2)
 
     return cross_merge(y + Ds[None, :, :, None], H, W)
