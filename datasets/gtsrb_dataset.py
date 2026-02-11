@@ -20,6 +20,7 @@ class GTSRBDataset(data.Dataset):
             self.path_images = df.apply(lambda row: os.path.join(root, "Final_Test", "Images", row["Filename"]), axis=1).values
 
         self.labels = df["ClassId"].astype(int).values
+        self.categories = sorted(set(self.labels))
         self.stats = df["ClassId"].astype(int).value_counts().sort_index().to_dict()
 
     def plot_statistics(self):
