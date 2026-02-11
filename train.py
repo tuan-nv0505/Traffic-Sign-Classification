@@ -31,7 +31,7 @@ TRANSFORMS = transforms.Compose([
 
 
 def train(Dataset: Type[GTSRBDataset]):
-    train_dataset = Dataset(path=TRAIN_DATA, transforms=TRANSFORMS)
+    train_dataset = Dataset(root=TRAIN_DATA, transforms=TRANSFORMS, train=True)
     indices = np.arange(len(train_dataset))
     labels = np.array(train_dataset.labels)
     skf = StratifiedKFold(n_splits=FOLDS, shuffle=True, random_state=42)
