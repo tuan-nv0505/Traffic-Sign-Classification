@@ -26,9 +26,13 @@ TRAINED = args.trained
 LOGGING = args.logging
 LOAD_CHECKPOINT = args.load_checkpoint
 TRANSFORMS = transforms.Compose([
-    transforms.ToTensor(),
     transforms.Resize((32, 32)),
+    transforms.ToTensor(),
 ])
+
+torch.manual_seed(42)
+np.random.seed(42)
+torch.cuda.manual_seed_all(42)
 
 
 def train(Dataset: Type[GTSRBDataset]):
@@ -57,10 +61,9 @@ def train(Dataset: Type[GTSRBDataset]):
         num_workers=WORKERS,
         drop_last=False,
     )
-    state_dict_test = None
 
     for fold in range(start_fold, FOLDS):
-        print(f"\n" + "=" * 20 + f" TRAINING FOLD {fold + 1}/{FOLDS} " + "=" * 20)
+        print(f"\n" + "=" * 20 + f" TRAIN FOLD {fold + 1}/{FOLDS} " + "=" * 20)
 
         train_idx, validation_idx = folds[fold]
         fold_trained_path = os.path.join(TRAINED, f"fold_{fold + 1}")
@@ -114,13 +117,13 @@ def train(Dataset: Type[GTSRBDataset]):
         for epoch in range(start_epoch, EPOCHS):
             progress_bar = tqdm(train_dataloader)
             model.train()
-            total_loss = 0.0
+            total_loss_train = 0.0
             for i, (images, labels_batch) in enumerate(progress_bar):
                 images, labels_batch = images.to(DEVICE), labels_batch.to(DEVICE)
 
                 optimizer.zero_grad()
-                output = model(images)
-                loss = criterion(output, labels_batch)
+                outputs = model(images)
+                loss = criterion(outputs, labels_batch)
                 loss.backward()
                 optimizer.step()
 
@@ -129,24 +132,29 @@ def train(Dataset: Type[GTSRBDataset]):
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
                     f"Loss: {loss.item():.4f}"
                 )
-                total_loss += loss.item()
+                total_loss_train += loss.item()
                 writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
-            print(f"--> Loss for epoch {epoch + 1:.4f} : {total_loss / num_iterations}")
+            print(f"--> Loss for epoch {epoch} : {(total_loss_train / num_iterations):.4f}")
+
+            print(f"\n" + "=" * 20 + f" VALIDATION FOLD {fold + 1}/{FOLDS} " + "=" * 20)
 
             model.eval()
             list_prediction = []
             list_label = []
-            for images, labels_val in validation_dataloader:
-                images = images.to(DEVICE)
-                labels_val = labels_val.to(DEVICE)
+            total_loss_validation = 0.0
 
-                with torch.no_grad():
+            with torch.no_grad():
+                for images, labels_val in validation_dataloader:
+                    images = images.to(DEVICE)
+                    labels_val = labels_val.to(DEVICE)
                     outputs = model(images)
-                list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
-                list_label.extend(labels_val.cpu().numpy())
+                    total_loss_validation += criterion(outputs, labels_val).item()
+
+                    list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
+                    list_label.extend(labels_val.cpu().numpy())
 
             accuracy = accuracy_score(list_label, list_prediction)
-            print(f"Fold {fold + 1} - Epoch {epoch + 1} Accuracy: {accuracy:.4f}")
+            print(f"Fold {fold + 1} - Epoch {epoch + 1} Loss: {(total_loss_validation / len(validation_dataloader)):.4f}   Accuracy: {accuracy:.4f}")
 
             is_best = accuracy > best_accuracy
             if is_best:
@@ -163,7 +171,6 @@ def train(Dataset: Type[GTSRBDataset]):
             if is_best:
                 torch.save(checkpoint, best_checkpoint_path)
                 print(f"--> New Best Accuracy for Fold {fold + 1}")
-                state_dict_test = model.state_dict()
 
             writer.add_scalar(f"Fold {fold + 1}/Validation/Accuracy", accuracy, epoch + 1)
             plot_confusion_matrix(
@@ -172,6 +179,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 class_names=train_dataset.categories,
                 epoch=epoch + 1,
                 mode="precision",
+                fold=fold + 1
             )
 
             plot_confusion_matrix(
@@ -180,40 +188,56 @@ def train(Dataset: Type[GTSRBDataset]):
                 class_names=train_dataset.categories,
                 epoch=epoch + 1,
                 mode="recall",
+                fold=fold + 1
             )
 
-        model.load_state_dict(state_dict_test)
+        print(f"\n" + "=" * 20 + f" TEST FOLD {fold + 1}/{FOLDS} " + "=" * 20)
+
+        best_checkpoint = torch.load(best_checkpoint_path, map_location=DEVICE)
+        model.load_state_dict(best_checkpoint["model_state_dict"])
+
         model.eval()
         list_prediction = []
         list_label = []
-        for images, labels_val in validation_dataloader:
-            images = images.to(DEVICE)
-            labels_val = labels_val.to(DEVICE)
+        total_loss_test = 0.0
 
-            with torch.no_grad():
-                outputs = model(images)
-            list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
-            list_label.extend(labels_val.cpu().numpy())
+        with torch.no_grad():
+            for images, labels_val in test_dataloader:
+                images = images.to(DEVICE)
+                labels_val = labels_val.to(DEVICE)
+                total_loss_test += criterion(outputs, labels_val).item()
+
+                list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
+                list_label.extend(labels_val.cpu().numpy())
+
+        accuracy = accuracy_score(list_label, list_prediction)
+        print(
+            f"Fold {fold + 1} Loss: {(total_loss_test / len(test_dataloader)):.4f}  Accuracy: {accuracy:.4f}")
 
         plot_confusion_matrix(
             writer=writer,
             cm=confusion_matrix(list_label, list_prediction),
             class_names=train_dataset.categories,
-            epoch=0,
+            epoch=EPOCHS,
             mode="precision",
-            train=False
+            train=False,
+            fold=fold + 1
         )
 
         plot_confusion_matrix(
             writer=writer,
             cm=confusion_matrix(list_label, list_prediction),
             class_names=train_dataset.categories,
-            epoch=0,
+            epoch=EPOCHS,
             mode="recall",
-            train=False
+            train=False,
+            fold=fold + 1
         )
 
         writer.close()
+        del model
+        del optimizer
+        torch.cuda.empty_cache()
 
 
 if __name__ == '__main__':
