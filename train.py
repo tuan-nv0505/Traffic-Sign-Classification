@@ -136,7 +136,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
             print(f"--> Loss for epoch {epoch} : {(total_loss_train / num_iterations):.4f}")
 
-            print(f"\n" + "=" * 20 + f" VALIDATION FOLD {fold + 1}/{FOLDS} " + "=" * 20)
+            print(f"\n" + "=" * 5 + f" VALIDATION FOLD {fold + 1}/{FOLDS} " + "=" * 5)
 
             model.eval()
             list_prediction = []
@@ -205,6 +205,7 @@ def train(Dataset: Type[GTSRBDataset]):
             for images, labels_val in test_dataloader:
                 images = images.to(DEVICE)
                 labels_val = labels_val.to(DEVICE)
+                outputs = model(images)
                 total_loss_test += criterion(outputs, labels_val).item()
 
                 list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
