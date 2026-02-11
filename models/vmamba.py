@@ -34,7 +34,7 @@ def cross_merge(y: torch.Tensor, H, W):
 
     return (y1 + y2 + y3 + y4).view(B, C, H, W).contiguous()
 
-def selective_scan(
+def selective_scan_v1(
         x: torch.Tensor,
         x_projection_weight: torch.Tensor, # (K, 2 * d_state + delta_rank, d_inner)
         delta_projection_weight: torch.Tensor, # (K, d_inner, d_rank)
@@ -44,6 +44,46 @@ def selective_scan(
         nrows = -1,
         delta_softplus = True,
         to_dtype = True
+):
+    _, _, H, W = x.shape
+    x_scanned = cross_scan(x)
+    B, K, C, L = x_scanned.shape
+    _, _, R = delta_projection_weight.shape
+    d_state = A_log.shape[-1]
+
+    delta_b_c = x_scanned.permute(0, 1, 3, 2) @ x_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
+    delta_b_c = delta_b_c.permute(0, 1, 3, 2)
+    delta, b, c = delta_b_c.split((R, d_state, d_state), dim=2)
+
+    delta = delta.permute(0, 1, 3, 2) @ delta_projection_weight.unsqueeze(0).permute(0, 1, 3, 2)
+    delta = delta.permute(0, 1, 3, 2) + delta_projection_bias[None, :, :, None]
+    if delta_softplus:
+        delta = F.softplus(delta)
+
+    delta_A = delta[:, :, :, :, None] * A_log[None, :, :, None, :]
+    phi = torch.exp(torch.cumsum(delta_A, dim=3))
+    delta_b_x_scanned = (
+            delta[:, :, :, None, :] *
+            b[:, :, None, :, :] *
+            x_scanned[:, :, :, None, :]
+    ).permute(0, 1, 2, 4, 3).contiguous()
+
+    h = phi * torch.cumsum(delta_b_x_scanned / phi, dim=3)
+    y = (h.permute(0, 1, 3, 2, 4) @ c.permute(0, 1, 3, 2).unsqueeze(-1)).squeeze(-1).permute(0, 1, 3, 2)
+
+    return cross_merge(y + Ds[None, :, :, None], H, W)
+
+
+def selective_scan_v2(
+        x: torch.Tensor,
+        x_projection_weight: torch.Tensor,  # (K, 2 * d_state + delta_rank, d_inner)
+        delta_projection_weight: torch.Tensor,  # (K, d_inner, d_rank)
+        delta_projection_bias: torch.Tensor,  # (K, d_inner)
+        A_log: torch.Tensor,  # (K, d_inner, d_state)
+        Ds: torch.Tensor,  # (K, d_inner)
+        nrows=-1,
+        delta_softplus=True,
+        to_dtype=True
 ):
     _, _, H, W = x.shape
     x_scanned = cross_scan(x)
@@ -75,6 +115,7 @@ def selective_scan(
         ys.append(y.squeeze(-1) + Ds)
 
     return cross_merge(torch.stack(ys, dim=-1), H, W)
+
 
 
 class SS2D(nn.Module):
@@ -221,7 +262,7 @@ class SS2D(nn.Module):
         if self.ssm_low_rank:
             x = self.in_rank(x)
 
-        x = selective_scan(
+        x = selective_scan_v1(
             x=x,
             x_projection_weight=self.x_projection_weight,
             delta_projection_weight=self.delta_projection_weight,
@@ -401,5 +442,5 @@ def check_parameters(model):
 
 if __name__ == '__main__':
     x = torch.randn((8, 3, 32, 32))
-    model = VSSBlock(hidden_dim=3)
-    check_parameters(model)
+    model = SS2D(d_model=3)
+    model(x)

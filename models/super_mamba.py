@@ -67,3 +67,4 @@ if __name__ == '__main__':
     x = torch.randn(16, 3, 32, 32)
     model = SuperMamba(dims=3, depth=4, num_classes=43)
     out = model(x)
+    summary(model, (32, 3, 32, 32))
