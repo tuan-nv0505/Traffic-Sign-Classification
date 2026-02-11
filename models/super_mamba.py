@@ -43,6 +43,7 @@ class SuperMamba(nn.Module):
             avgpool=nn.AdaptiveAvgPool2d(1),
             flatten=nn.Flatten(1),
             head=nn.Linear(self.num_features, num_classes),
+            dropout=nn.Dropout(p=0.5),
         ))
 
         self.apply(self._init_weights)
