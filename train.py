@@ -44,7 +44,7 @@ def train(Dataset: Type[GTSRBDataset]):
         transforms.ColorJitter(brightness=0.2, contrast=0.2),
         transforms.RandomAffine(
             scale=(0.85, 1.15),
-            degrees=(-6, 6),
+            degrees=(-5, 5),
             translate=(0.15, 0.15),
         ),
         transforms.ToTensor(),

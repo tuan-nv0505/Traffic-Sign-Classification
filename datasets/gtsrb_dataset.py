@@ -53,5 +53,5 @@ class GTSRBDataset(data.Dataset):
 
 if __name__ == '__main__':
     path = "../data/gtsrb/"
-
-
+    dataset = GTSRBDataset(root=path, train=True)
+    dataset.plot_statistics()

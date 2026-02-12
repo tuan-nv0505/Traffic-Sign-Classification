@@ -49,18 +49,21 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, fold=None, train=True)
 
     f1_matrix = np.diag(f1_diagonal)
 
-    figure = plt.figure(figsize=(22, 20))
-    plt.imshow(f1_matrix, interpolation="nearest", cmap="GnBu")
+    figure = plt.figure(figsize=(20, 20))
+    plt.imshow(f1_matrix, interpolation='nearest', cmap="ocean")
     plt.title("Per-Class F1-Score Matrix")
-    plt.colorbar(label="F1-Score")
+    plt.colorbar()
 
     tick_marks = np.arange(len(class_names))
-    plt.xticks(tick_marks, class_names, rotation=90, fontsize=8)
-    plt.yticks(tick_marks, class_names, fontsize=8)
+    plt.xticks(tick_marks, class_names, rotation=45)
+    plt.yticks(tick_marks, class_names)
+
+    threshold = 0.5
 
     for i in range(len(class_names)):
-        val = np.round(f1_diagonal[i], 2)
-        color = "white" if val > 0.5 else "red"
+        val = np.around(f1_diagonal[i], decimals=2)
+        color = "black" if val > threshold else "white"
+
         plt.text(i, i, val,
                  horizontalalignment="center",
                  verticalalignment="center",
@@ -68,8 +71,8 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, fold=None, train=True)
                  fontweight='bold')
 
     plt.tight_layout()
-    plt.ylabel("True Class")
-    plt.xlabel("Predicted Class")
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
 
     s1 = f"Fold {fold}/" if fold is not None else ""
     s2 = "Validation" if train else "Test"
