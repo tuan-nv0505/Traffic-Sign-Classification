@@ -24,7 +24,7 @@ WORKERS = args.workers
 TRAINED = args.trained
 LOGGING = args.logging
 LOAD_CHECKPOINT = args.load_checkpoint
-
+DEEP = args.deep
 
 def train(Dataset: Type[GTSRBDataset]):
     mean, std = get_mean_and_std(
@@ -111,7 +111,7 @@ def train(Dataset: Type[GTSRBDataset]):
             drop_last=False
         )
 
-        model = SuperMamba(dims=3, depth=4, num_classes=43).to(DEVICE)
+        model = SuperMamba(dims=3, depth=DEEP, num_classes=43).to(DEVICE)
         optimizer = torch.optim.Adam(model.parameters(), lr=LR)
         criterion = torch.nn.CrossEntropyLoss()
 

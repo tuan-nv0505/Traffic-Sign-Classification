@@ -19,6 +19,7 @@ def get_args():
     parser.add_argument("--trained", type=str, default="trained")
     parser.add_argument("--logging", type=str, default="tensorboard")
     parser.add_argument("--load_checkpoint", action="store_true")
+    parser.add_argument("--deep", type=int, default=4)
 
     return parser.parse_args()
 

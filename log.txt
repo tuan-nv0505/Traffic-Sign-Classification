@@ -1,0 +1,2000 @@
+==================== TRAIN FOLD 1/5 ====================
+Start training for Fold 1
+Fold [1/5] - Epoch [1/70] - Loss: 3.4363: 100%|█| 167/167 [00:33<00:00,  5.05it/
+--> Loss for epoch 1 : 3.5958
+
+===== VALIDATION EPOCH 1/70 =====
+Epoch 1 Loss: 3.4889   F1 score: 0.0163
+-->[EPOCH BEST] New Best F1 score for Epoch 1
+Fold [1/5] - Epoch [2/70] - Loss: 3.2251: 100%|█| 167/167 [00:25<00:00,  6.55it/
+--> Loss for epoch 2 : 3.3883
+
+===== VALIDATION EPOCH 2/70 =====
+Epoch 2 Loss: 3.2753   F1 score: 0.0371
+-->[EPOCH BEST] New Best F1 score for Epoch 2
+Fold [1/5] - Epoch [3/70] - Loss: 2.8575: 100%|█| 167/167 [00:25<00:00,  6.44it/
+--> Loss for epoch 3 : 3.1114
+
+===== VALIDATION EPOCH 3/70 =====
+Epoch 3 Loss: 2.9680   F1 score: 0.0679
+-->[EPOCH BEST] New Best F1 score for Epoch 3
+Fold [1/5] - Epoch [4/70] - Loss: 2.6785: 100%|█| 167/167 [00:26<00:00,  6.28it/
+--> Loss for epoch 4 : 2.7930
+
+===== VALIDATION EPOCH 4/70 =====
+Epoch 4 Loss: 2.6591   F1 score: 0.1011
+-->[EPOCH BEST] New Best F1 score for Epoch 4
+Fold [1/5] - Epoch [5/70] - Loss: 2.3058: 100%|█| 167/167 [00:26<00:00,  6.29it/
+--> Loss for epoch 5 : 2.5437
+
+===== VALIDATION EPOCH 5/70 =====
+Epoch 5 Loss: 2.4721   F1 score: 0.1100
+-->[EPOCH BEST] New Best F1 score for Epoch 5
+Fold [1/5] - Epoch [6/70] - Loss: 2.1430: 100%|█| 167/167 [00:26<00:00,  6.33it/
+--> Loss for epoch 6 : 2.3355
+
+===== VALIDATION EPOCH 6/70 =====
+Epoch 6 Loss: 2.2823   F1 score: 0.1221
+-->[EPOCH BEST] New Best F1 score for Epoch 6
+Fold [1/5] - Epoch [7/70] - Loss: 2.0466: 100%|█| 167/167 [00:27<00:00,  6.17it/
+--> Loss for epoch 7 : 2.1649
+
+===== VALIDATION EPOCH 7/70 =====
+Epoch 7 Loss: 2.1100   F1 score: 0.1516
+-->[EPOCH BEST] New Best F1 score for Epoch 7
+Fold [1/5] - Epoch [8/70] - Loss: 1.9114: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 8 : 2.0338
+
+===== VALIDATION EPOCH 8/70 =====
+Epoch 8 Loss: 1.9900   F1 score: 0.1830
+-->[EPOCH BEST] New Best F1 score for Epoch 8
+Fold [1/5] - Epoch [9/70] - Loss: 1.8832: 100%|█| 167/167 [00:26<00:00,  6.28it/
+--> Loss for epoch 9 : 1.9191
+
+===== VALIDATION EPOCH 9/70 =====
+Epoch 9 Loss: 1.9157   F1 score: 0.1991
+-->[EPOCH BEST] New Best F1 score for Epoch 9
+Fold [1/5] - Epoch [10/70] - Loss: 1.7557: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 10 : 1.8092
+
+===== VALIDATION EPOCH 10/70 =====
+Epoch 10 Loss: 1.7739   F1 score: 0.2097
+-->[EPOCH BEST] New Best F1 score for Epoch 10
+Fold [1/5] - Epoch [11/70] - Loss: 1.7885: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 11 : 1.7063
+
+===== VALIDATION EPOCH 11/70 =====
+Epoch 11 Loss: 1.6755   F1 score: 0.2258
+-->[EPOCH BEST] New Best F1 score for Epoch 11
+Fold [1/5] - Epoch [12/70] - Loss: 1.6350: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 12 : 1.6134
+
+===== VALIDATION EPOCH 12/70 =====
+Epoch 12 Loss: 1.5664   F1 score: 0.2499
+-->[EPOCH BEST] New Best F1 score for Epoch 12
+Fold [1/5] - Epoch [13/70] - Loss: 1.3074: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 13 : 1.5169
+
+===== VALIDATION EPOCH 13/70 =====
+Epoch 13 Loss: 1.4899   F1 score: 0.2521
+-->[EPOCH BEST] New Best F1 score for Epoch 13
+Fold [1/5] - Epoch [14/70] - Loss: 1.2465: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 14 : 1.4404
+
+===== VALIDATION EPOCH 14/70 =====
+Epoch 14 Loss: 1.4349   F1 score: 0.2775
+-->[EPOCH BEST] New Best F1 score for Epoch 14
+Fold [1/5] - Epoch [15/70] - Loss: 1.5183: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 15 : 1.3669
+
+===== VALIDATION EPOCH 15/70 =====
+Epoch 15 Loss: 1.3429   F1 score: 0.2977
+-->[EPOCH BEST] New Best F1 score for Epoch 15
+Fold [1/5] - Epoch [16/70] - Loss: 1.2254: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 16 : 1.3109
+
+===== VALIDATION EPOCH 16/70 =====
+Epoch 16 Loss: 1.2768   F1 score: 0.3282
+-->[EPOCH BEST] New Best F1 score for Epoch 16
+Fold [1/5] - Epoch [17/70] - Loss: 1.2485: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 17 : 1.2410
+
+===== VALIDATION EPOCH 17/70 =====
+Epoch 17 Loss: 1.2359   F1 score: 0.3358
+-->[EPOCH BEST] New Best F1 score for Epoch 17
+Fold [1/5] - Epoch [18/70] - Loss: 1.0378: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 18 : 1.1835
+
+===== VALIDATION EPOCH 18/70 =====
+Epoch 18 Loss: 1.1918   F1 score: 0.3719
+-->[EPOCH BEST] New Best F1 score for Epoch 18
+Fold [1/5] - Epoch [19/70] - Loss: 1.4342: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 19 : 1.1198
+
+===== VALIDATION EPOCH 19/70 =====
+Epoch 19 Loss: 1.1150   F1 score: 0.3970
+-->[EPOCH BEST] New Best F1 score for Epoch 19
+Fold [1/5] - Epoch [20/70] - Loss: 0.8746: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 20 : 1.0454
+
+===== VALIDATION EPOCH 20/70 =====
+Epoch 20 Loss: 1.0303   F1 score: 0.4544
+-->[EPOCH BEST] New Best F1 score for Epoch 20
+Fold [1/5] - Epoch [21/70] - Loss: 0.9550: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 21 : 0.9720
+
+===== VALIDATION EPOCH 21/70 =====
+Epoch 21 Loss: 1.0234   F1 score: 0.4599
+-->[EPOCH BEST] New Best F1 score for Epoch 21
+Fold [1/5] - Epoch [22/70] - Loss: 0.8408: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 22 : 0.9215
+
+===== VALIDATION EPOCH 22/70 =====
+Epoch 22 Loss: 0.9251   F1 score: 0.5162
+-->[EPOCH BEST] New Best F1 score for Epoch 22
+Fold [1/5] - Epoch [23/70] - Loss: 0.8914: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 23 : 0.8334
+
+===== VALIDATION EPOCH 23/70 =====
+Epoch 23 Loss: 0.8346   F1 score: 0.5523
+-->[EPOCH BEST] New Best F1 score for Epoch 23
+Fold [1/5] - Epoch [24/70] - Loss: 1.1424: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 24 : 0.7863
+
+===== VALIDATION EPOCH 24/70 =====
+Epoch 24 Loss: 0.7657   F1 score: 0.5572
+-->[EPOCH BEST] New Best F1 score for Epoch 24
+Fold [1/5] - Epoch [25/70] - Loss: 0.6426: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 25 : 0.7286
+
+===== VALIDATION EPOCH 25/70 =====
+Epoch 25 Loss: 0.7602   F1 score: 0.5715
+-->[EPOCH BEST] New Best F1 score for Epoch 25
+Fold [1/5] - Epoch [26/70] - Loss: 0.6344: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 26 : 0.6758
+
+===== VALIDATION EPOCH 26/70 =====
+Epoch 26 Loss: 0.6495   F1 score: 0.6218
+-->[EPOCH BEST] New Best F1 score for Epoch 26
+Fold [1/5] - Epoch [27/70] - Loss: 0.6386: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 27 : 0.6334
+
+===== VALIDATION EPOCH 27/70 =====
+Epoch 27 Loss: 0.6233   F1 score: 0.6477
+-->[EPOCH BEST] New Best F1 score for Epoch 27
+Fold [1/5] - Epoch [28/70] - Loss: 0.7128: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 28 : 0.6053
+
+===== VALIDATION EPOCH 28/70 =====
+Epoch 28 Loss: 0.6187   F1 score: 0.6476
+Fold [1/5] - Epoch [29/70] - Loss: 0.6062: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 29 : 0.5572
+
+===== VALIDATION EPOCH 29/70 =====
+Epoch 29 Loss: 0.5870   F1 score: 0.6723
+-->[EPOCH BEST] New Best F1 score for Epoch 29
+Fold [1/5] - Epoch [30/70] - Loss: 0.4579: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 30 : 0.5208
+
+===== VALIDATION EPOCH 30/70 =====
+Epoch 30 Loss: 0.5153   F1 score: 0.6881
+-->[EPOCH BEST] New Best F1 score for Epoch 30
+Fold [1/5] - Epoch [31/70] - Loss: 0.6637: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 31 : 0.5060
+
+===== VALIDATION EPOCH 31/70 =====
+Epoch 31 Loss: 0.5109   F1 score: 0.7004
+-->[EPOCH BEST] New Best F1 score for Epoch 31
+Fold [1/5] - Epoch [32/70] - Loss: 0.5512: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 32 : 0.4754
+
+===== VALIDATION EPOCH 32/70 =====
+Epoch 32 Loss: 0.5399   F1 score: 0.7077
+-->[EPOCH BEST] New Best F1 score for Epoch 32
+Fold [1/5] - Epoch [33/70] - Loss: 0.5347: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 33 : 0.4540
+
+===== VALIDATION EPOCH 33/70 =====
+Epoch 33 Loss: 0.4763   F1 score: 0.6960
+Fold [1/5] - Epoch [34/70] - Loss: 0.4412: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 34 : 0.4204
+
+===== VALIDATION EPOCH 34/70 =====
+Epoch 34 Loss: 0.4798   F1 score: 0.7543
+-->[EPOCH BEST] New Best F1 score for Epoch 34
+Fold [1/5] - Epoch [35/70] - Loss: 0.4446: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 35 : 0.4002
+
+===== VALIDATION EPOCH 35/70 =====
+Epoch 35 Loss: 0.4622   F1 score: 0.7449
+Fold [1/5] - Epoch [36/70] - Loss: 0.3666: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 36 : 0.3759
+
+===== VALIDATION EPOCH 36/70 =====
+Epoch 36 Loss: 0.3869   F1 score: 0.7969
+-->[EPOCH BEST] New Best F1 score for Epoch 36
+Fold [1/5] - Epoch [37/70] - Loss: 0.4272: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 37 : 0.3674
+
+===== VALIDATION EPOCH 37/70 =====
+Epoch 37 Loss: 0.4017   F1 score: 0.7776
+Fold [1/5] - Epoch [38/70] - Loss: 0.4716: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 38 : 0.3421
+
+===== VALIDATION EPOCH 38/70 =====
+Epoch 38 Loss: 0.3674   F1 score: 0.8018
+-->[EPOCH BEST] New Best F1 score for Epoch 38
+Fold [1/5] - Epoch [39/70] - Loss: 0.3384: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 39 : 0.3290
+
+===== VALIDATION EPOCH 39/70 =====
+Epoch 39 Loss: 0.3278   F1 score: 0.8148
+-->[EPOCH BEST] New Best F1 score for Epoch 39
+Fold [1/5] - Epoch [40/70] - Loss: 0.3911: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 40 : 0.3145
+
+===== VALIDATION EPOCH 40/70 =====
+Epoch 40 Loss: 0.3102   F1 score: 0.8265
+-->[EPOCH BEST] New Best F1 score for Epoch 40
+Fold [1/5] - Epoch [41/70] - Loss: 0.3978: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 41 : 0.2928
+
+===== VALIDATION EPOCH 41/70 =====
+Epoch 41 Loss: 0.3461   F1 score: 0.8067
+Fold [1/5] - Epoch [42/70] - Loss: 0.4013: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 42 : 0.2786
+
+===== VALIDATION EPOCH 42/70 =====
+Epoch 42 Loss: 0.2781   F1 score: 0.8587
+-->[EPOCH BEST] New Best F1 score for Epoch 42
+Fold [1/5] - Epoch [43/70] - Loss: 0.2773: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 43 : 0.2699
+
+===== VALIDATION EPOCH 43/70 =====
+Epoch 43 Loss: 0.3282   F1 score: 0.8106
+Fold [1/5] - Epoch [44/70] - Loss: 0.1882: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 44 : 0.2487
+
+===== VALIDATION EPOCH 44/70 =====
+Epoch 44 Loss: 0.2722   F1 score: 0.8534
+Fold [1/5] - Epoch [45/70] - Loss: 0.1996: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 45 : 0.2414
+
+===== VALIDATION EPOCH 45/70 =====
+Epoch 45 Loss: 0.2975   F1 score: 0.8491
+Fold [1/5] - Epoch [46/70] - Loss: 0.2784: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 46 : 0.2334
+
+===== VALIDATION EPOCH 46/70 =====
+Epoch 46 Loss: 0.3093   F1 score: 0.8332
+Fold [1/5] - Epoch [47/70] - Loss: 0.2005: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 47 : 0.2318
+
+===== VALIDATION EPOCH 47/70 =====
+Epoch 47 Loss: 0.2562   F1 score: 0.8688
+-->[EPOCH BEST] New Best F1 score for Epoch 47
+Fold [1/5] - Epoch [48/70] - Loss: 0.1920: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 48 : 0.2235
+
+===== VALIDATION EPOCH 48/70 =====
+Epoch 48 Loss: 0.2188   F1 score: 0.8963
+-->[EPOCH BEST] New Best F1 score for Epoch 48
+Fold [1/5] - Epoch [49/70] - Loss: 0.2670: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 49 : 0.2009
+
+===== VALIDATION EPOCH 49/70 =====
+Epoch 49 Loss: 0.2223   F1 score: 0.8833
+Fold [1/5] - Epoch [50/70] - Loss: 0.1404: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 50 : 0.2019
+
+===== VALIDATION EPOCH 50/70 =====
+Epoch 50 Loss: 0.1950   F1 score: 0.8975
+-->[EPOCH BEST] New Best F1 score for Epoch 50
+Fold [1/5] - Epoch [51/70] - Loss: 0.1378: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 51 : 0.1928
+
+===== VALIDATION EPOCH 51/70 =====
+Epoch 51 Loss: 0.2283   F1 score: 0.8808
+Fold [1/5] - Epoch [52/70] - Loss: 0.2497: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 52 : 0.1756
+
+===== VALIDATION EPOCH 52/70 =====
+Epoch 52 Loss: 0.2128   F1 score: 0.8911
+Fold [1/5] - Epoch [53/70] - Loss: 0.1354: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 53 : 0.1760
+
+===== VALIDATION EPOCH 53/70 =====
+Epoch 53 Loss: 0.1896   F1 score: 0.9095
+-->[EPOCH BEST] New Best F1 score for Epoch 53
+Fold [1/5] - Epoch [54/70] - Loss: 0.2260: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 54 : 0.1692
+
+===== VALIDATION EPOCH 54/70 =====
+Epoch 54 Loss: 0.2135   F1 score: 0.8921
+Fold [1/5] - Epoch [55/70] - Loss: 0.1351: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 55 : 0.1667
+
+===== VALIDATION EPOCH 55/70 =====
+Epoch 55 Loss: 0.2256   F1 score: 0.8929
+Fold [1/5] - Epoch [56/70] - Loss: 0.1693: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 56 : 0.1588
+
+===== VALIDATION EPOCH 56/70 =====
+Epoch 56 Loss: 0.1810   F1 score: 0.9114
+-->[EPOCH BEST] New Best F1 score for Epoch 56
+Fold [1/5] - Epoch [57/70] - Loss: 0.0864: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 57 : 0.1457
+
+===== VALIDATION EPOCH 57/70 =====
+Epoch 57 Loss: 0.2061   F1 score: 0.8911
+Fold [1/5] - Epoch [58/70] - Loss: 0.1157: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 58 : 0.1451
+
+===== VALIDATION EPOCH 58/70 =====
+Epoch 58 Loss: 0.1884   F1 score: 0.8959
+Fold [1/5] - Epoch [59/70] - Loss: 0.1866: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 59 : 0.1515
+
+===== VALIDATION EPOCH 59/70 =====
+Epoch 59 Loss: 0.1887   F1 score: 0.9110
+Fold [1/5] - Epoch [60/70] - Loss: 0.1869: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 60 : 0.1378
+
+===== VALIDATION EPOCH 60/70 =====
+Epoch 60 Loss: 0.1627   F1 score: 0.9175
+-->[EPOCH BEST] New Best F1 score for Epoch 60
+Fold [1/5] - Epoch [61/70] - Loss: 0.0935: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 61 : 0.1389
+
+===== VALIDATION EPOCH 61/70 =====
+Epoch 61 Loss: 0.1553   F1 score: 0.9309
+-->[EPOCH BEST] New Best F1 score for Epoch 61
+Fold [1/5] - Epoch [62/70] - Loss: 0.1984: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 62 : 0.1331
+
+===== VALIDATION EPOCH 62/70 =====
+Epoch 62 Loss: 0.2319   F1 score: 0.8813
+Fold [1/5] - Epoch [63/70] - Loss: 0.1270: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 63 : 0.1322
+
+===== VALIDATION EPOCH 63/70 =====
+Epoch 63 Loss: 0.1559   F1 score: 0.9208
+Fold [1/5] - Epoch [64/70] - Loss: 0.2810: 100%|█| 167/167 [00:26<00:00,  6.30it
+--> Loss for epoch 64 : 0.1321
+
+===== VALIDATION EPOCH 64/70 =====
+Epoch 64 Loss: 0.1294   F1 score: 0.9390
+-->[EPOCH BEST] New Best F1 score for Epoch 64
+Fold [1/5] - Epoch [65/70] - Loss: 0.1863: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 65 : 0.1204
+
+===== VALIDATION EPOCH 65/70 =====
+Epoch 65 Loss: 0.1476   F1 score: 0.9342
+Fold [1/5] - Epoch [66/70] - Loss: 0.1226: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 66 : 0.1245
+
+===== VALIDATION EPOCH 66/70 =====
+Epoch 66 Loss: 0.1551   F1 score: 0.9326
+Fold [1/5] - Epoch [67/70] - Loss: 0.2162: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 67 : 0.1124
+
+===== VALIDATION EPOCH 67/70 =====
+Epoch 67 Loss: 0.1478   F1 score: 0.9302
+Fold [1/5] - Epoch [68/70] - Loss: 0.2171: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 68 : 0.1134
+
+===== VALIDATION EPOCH 68/70 =====
+Epoch 68 Loss: 0.1418   F1 score: 0.9277
+Fold [1/5] - Epoch [69/70] - Loss: 0.1141: 100%|█| 167/167 [00:27<00:00,  6.10it
+--> Loss for epoch 69 : 0.1116
+
+===== VALIDATION EPOCH 69/70 =====
+Epoch 69 Loss: 0.1195   F1 score: 0.9482
+-->[EPOCH BEST] New Best F1 score for Epoch 69
+Fold [1/5] - Epoch [70/70] - Loss: 0.0885: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 70 : 0.1030
+
+===== VALIDATION EPOCH 70/70 =====
+Epoch 70 Loss: 0.1310   F1 score: 0.9477
+
+==================== TEST FOLD 1/5 ====================
+--> [GLOBAL BEST] New Best checkpoint found in Fold 1!
+Fold 1 Loss: 0.3302  F1 score: 0.8704
+
+==================== TRAIN FOLD 2/5 ====================
+Start training for Fold 2
+Fold [2/5] - Epoch [1/70] - Loss: 3.4288: 100%|█| 167/167 [00:26<00:00,  6.26it/
+--> Loss for epoch 1 : 3.5981
+
+===== VALIDATION EPOCH 1/70 =====
+Epoch 1 Loss: 3.4718   F1 score: 0.0126
+-->[EPOCH BEST] New Best F1 score for Epoch 1
+Fold [2/5] - Epoch [2/70] - Loss: 3.2937: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 2 : 3.3548
+
+===== VALIDATION EPOCH 2/70 =====
+Epoch 2 Loss: 3.2738   F1 score: 0.0346
+-->[EPOCH BEST] New Best F1 score for Epoch 2
+Fold [2/5] - Epoch [3/70] - Loss: 2.9362: 100%|█| 167/167 [00:26<00:00,  6.28it/
+--> Loss for epoch 3 : 3.1225
+
+===== VALIDATION EPOCH 3/70 =====
+Epoch 3 Loss: 2.9707   F1 score: 0.0522
+-->[EPOCH BEST] New Best F1 score for Epoch 3
+Fold [2/5] - Epoch [4/70] - Loss: 2.5738: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 4 : 2.7916
+
+===== VALIDATION EPOCH 4/70 =====
+Epoch 4 Loss: 2.5987   F1 score: 0.1174
+-->[EPOCH BEST] New Best F1 score for Epoch 4
+Fold [2/5] - Epoch [5/70] - Loss: 2.3078: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 5 : 2.4646
+
+===== VALIDATION EPOCH 5/70 =====
+Epoch 5 Loss: 2.3602   F1 score: 0.1235
+-->[EPOCH BEST] New Best F1 score for Epoch 5
+Fold [2/5] - Epoch [6/70] - Loss: 2.3722: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 6 : 2.2335
+
+===== VALIDATION EPOCH 6/70 =====
+Epoch 6 Loss: 2.1386   F1 score: 0.1518
+-->[EPOCH BEST] New Best F1 score for Epoch 6
+Fold [2/5] - Epoch [7/70] - Loss: 1.8759: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 7 : 2.0622
+
+===== VALIDATION EPOCH 7/70 =====
+Epoch 7 Loss: 2.0013   F1 score: 0.1595
+-->[EPOCH BEST] New Best F1 score for Epoch 7
+Fold [2/5] - Epoch [8/70] - Loss: 1.8604: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 8 : 1.9427
+
+===== VALIDATION EPOCH 8/70 =====
+Epoch 8 Loss: 1.8865   F1 score: 0.1656
+-->[EPOCH BEST] New Best F1 score for Epoch 8
+Fold [2/5] - Epoch [9/70] - Loss: 1.7287: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 9 : 1.8483
+
+===== VALIDATION EPOCH 9/70 =====
+Epoch 9 Loss: 1.8122   F1 score: 0.1717
+-->[EPOCH BEST] New Best F1 score for Epoch 9
+Fold [2/5] - Epoch [10/70] - Loss: 1.7889: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 10 : 1.7818
+
+===== VALIDATION EPOCH 10/70 =====
+Epoch 10 Loss: 1.7296   F1 score: 0.1958
+-->[EPOCH BEST] New Best F1 score for Epoch 10
+Fold [2/5] - Epoch [11/70] - Loss: 1.5395: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 11 : 1.6994
+
+===== VALIDATION EPOCH 11/70 =====
+Epoch 11 Loss: 1.6540   F1 score: 0.2153
+-->[EPOCH BEST] New Best F1 score for Epoch 11
+Fold [2/5] - Epoch [12/70] - Loss: 1.6345: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 12 : 1.6262
+
+===== VALIDATION EPOCH 12/70 =====
+Epoch 12 Loss: 1.6338   F1 score: 0.2166
+-->[EPOCH BEST] New Best F1 score for Epoch 12
+Fold [2/5] - Epoch [13/70] - Loss: 1.5740: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 13 : 1.5609
+
+===== VALIDATION EPOCH 13/70 =====
+Epoch 13 Loss: 1.5445   F1 score: 0.2416
+-->[EPOCH BEST] New Best F1 score for Epoch 13
+Fold [2/5] - Epoch [14/70] - Loss: 1.5690: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 14 : 1.4931
+
+===== VALIDATION EPOCH 14/70 =====
+Epoch 14 Loss: 1.4766   F1 score: 0.2594
+-->[EPOCH BEST] New Best F1 score for Epoch 14
+Fold [2/5] - Epoch [15/70] - Loss: 1.4741: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 15 : 1.4204
+
+===== VALIDATION EPOCH 15/70 =====
+Epoch 15 Loss: 1.4415   F1 score: 0.2937
+-->[EPOCH BEST] New Best F1 score for Epoch 15
+Fold [2/5] - Epoch [16/70] - Loss: 1.2945: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 16 : 1.3597
+
+===== VALIDATION EPOCH 16/70 =====
+Epoch 16 Loss: 1.3240   F1 score: 0.3426
+-->[EPOCH BEST] New Best F1 score for Epoch 16
+Fold [2/5] - Epoch [17/70] - Loss: 1.2962: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 17 : 1.2964
+
+===== VALIDATION EPOCH 17/70 =====
+Epoch 17 Loss: 1.2825   F1 score: 0.3669
+-->[EPOCH BEST] New Best F1 score for Epoch 17
+Fold [2/5] - Epoch [18/70] - Loss: 1.5553: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 18 : 1.2315
+
+===== VALIDATION EPOCH 18/70 =====
+Epoch 18 Loss: 1.2195   F1 score: 0.4008
+-->[EPOCH BEST] New Best F1 score for Epoch 18
+Fold [2/5] - Epoch [19/70] - Loss: 1.2689: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 19 : 1.1642
+
+===== VALIDATION EPOCH 19/70 =====
+Epoch 19 Loss: 1.1662   F1 score: 0.3883
+Fold [2/5] - Epoch [20/70] - Loss: 1.2366: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 20 : 1.1081
+
+===== VALIDATION EPOCH 20/70 =====
+Epoch 20 Loss: 1.0632   F1 score: 0.4672
+-->[EPOCH BEST] New Best F1 score for Epoch 20
+Fold [2/5] - Epoch [21/70] - Loss: 0.9823: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 21 : 1.0412
+
+===== VALIDATION EPOCH 21/70 =====
+Epoch 21 Loss: 1.0464   F1 score: 0.4768
+-->[EPOCH BEST] New Best F1 score for Epoch 21
+Fold [2/5] - Epoch [22/70] - Loss: 1.0533: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 22 : 0.9822
+
+===== VALIDATION EPOCH 22/70 =====
+Epoch 22 Loss: 0.9694   F1 score: 0.4884
+-->[EPOCH BEST] New Best F1 score for Epoch 22
+Fold [2/5] - Epoch [23/70] - Loss: 0.7972: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 23 : 0.9317
+
+===== VALIDATION EPOCH 23/70 =====
+Epoch 23 Loss: 0.9560   F1 score: 0.5034
+-->[EPOCH BEST] New Best F1 score for Epoch 23
+Fold [2/5] - Epoch [24/70] - Loss: 0.8639: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 24 : 0.8716
+
+===== VALIDATION EPOCH 24/70 =====
+Epoch 24 Loss: 0.9393   F1 score: 0.5239
+-->[EPOCH BEST] New Best F1 score for Epoch 24
+Fold [2/5] - Epoch [25/70] - Loss: 0.9345: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 25 : 0.8192
+
+===== VALIDATION EPOCH 25/70 =====
+Epoch 25 Loss: 0.8359   F1 score: 0.5498
+-->[EPOCH BEST] New Best F1 score for Epoch 25
+Fold [2/5] - Epoch [26/70] - Loss: 0.7554: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 26 : 0.7816
+
+===== VALIDATION EPOCH 26/70 =====
+Epoch 26 Loss: 0.7537   F1 score: 0.5915
+-->[EPOCH BEST] New Best F1 score for Epoch 26
+Fold [2/5] - Epoch [27/70] - Loss: 0.7095: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 27 : 0.7284
+
+===== VALIDATION EPOCH 27/70 =====
+Epoch 27 Loss: 0.7402   F1 score: 0.6131
+-->[EPOCH BEST] New Best F1 score for Epoch 27
+Fold [2/5] - Epoch [28/70] - Loss: 0.6020: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 28 : 0.6706
+
+===== VALIDATION EPOCH 28/70 =====
+Epoch 28 Loss: 0.7025   F1 score: 0.6011
+Fold [2/5] - Epoch [29/70] - Loss: 0.6639: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 29 : 0.6365
+
+===== VALIDATION EPOCH 29/70 =====
+Epoch 29 Loss: 0.6228   F1 score: 0.6638
+-->[EPOCH BEST] New Best F1 score for Epoch 29
+Fold [2/5] - Epoch [30/70] - Loss: 0.5345: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 30 : 0.5943
+
+===== VALIDATION EPOCH 30/70 =====
+Epoch 30 Loss: 0.5814   F1 score: 0.6865
+-->[EPOCH BEST] New Best F1 score for Epoch 30
+Fold [2/5] - Epoch [31/70] - Loss: 0.5154: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 31 : 0.5446
+
+===== VALIDATION EPOCH 31/70 =====
+Epoch 31 Loss: 0.6103   F1 score: 0.6884
+-->[EPOCH BEST] New Best F1 score for Epoch 31
+Fold [2/5] - Epoch [32/70] - Loss: 0.3388: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 32 : 0.5053
+
+===== VALIDATION EPOCH 32/70 =====
+Epoch 32 Loss: 0.5783   F1 score: 0.6787
+Fold [2/5] - Epoch [33/70] - Loss: 0.4437: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 33 : 0.4681
+
+===== VALIDATION EPOCH 33/70 =====
+Epoch 33 Loss: 0.4755   F1 score: 0.7293
+-->[EPOCH BEST] New Best F1 score for Epoch 33
+Fold [2/5] - Epoch [34/70] - Loss: 0.4108: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 34 : 0.4366
+
+===== VALIDATION EPOCH 34/70 =====
+Epoch 34 Loss: 0.4520   F1 score: 0.7635
+-->[EPOCH BEST] New Best F1 score for Epoch 34
+Fold [2/5] - Epoch [35/70] - Loss: 0.4409: 100%|█| 167/167 [00:26<00:00,  6.19it
+--> Loss for epoch 35 : 0.4223
+
+===== VALIDATION EPOCH 35/70 =====
+Epoch 35 Loss: 0.5285   F1 score: 0.7424
+Fold [2/5] - Epoch [36/70] - Loss: 0.4257: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 36 : 0.3964
+
+===== VALIDATION EPOCH 36/70 =====
+Epoch 36 Loss: 0.4458   F1 score: 0.7702
+-->[EPOCH BEST] New Best F1 score for Epoch 36
+Fold [2/5] - Epoch [37/70] - Loss: 0.5687: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 37 : 0.3766
+
+===== VALIDATION EPOCH 37/70 =====
+Epoch 37 Loss: 0.3814   F1 score: 0.8208
+-->[EPOCH BEST] New Best F1 score for Epoch 37
+Fold [2/5] - Epoch [38/70] - Loss: 0.2754: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 38 : 0.3424
+
+===== VALIDATION EPOCH 38/70 =====
+Epoch 38 Loss: 0.3545   F1 score: 0.8044
+Fold [2/5] - Epoch [39/70] - Loss: 0.3697: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 39 : 0.3299
+
+===== VALIDATION EPOCH 39/70 =====
+Epoch 39 Loss: 0.3481   F1 score: 0.8183
+Fold [2/5] - Epoch [40/70] - Loss: 0.3717: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 40 : 0.3058
+
+===== VALIDATION EPOCH 40/70 =====
+Epoch 40 Loss: 0.3065   F1 score: 0.8480
+-->[EPOCH BEST] New Best F1 score for Epoch 40
+Fold [2/5] - Epoch [41/70] - Loss: 0.2527: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 41 : 0.2856
+
+===== VALIDATION EPOCH 41/70 =====
+Epoch 41 Loss: 0.2992   F1 score: 0.8650
+-->[EPOCH BEST] New Best F1 score for Epoch 41
+Fold [2/5] - Epoch [42/70] - Loss: 0.1615: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 42 : 0.2708
+
+===== VALIDATION EPOCH 42/70 =====
+Epoch 42 Loss: 0.3241   F1 score: 0.8395
+Fold [2/5] - Epoch [43/70] - Loss: 0.2651: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 43 : 0.2610
+
+===== VALIDATION EPOCH 43/70 =====
+Epoch 43 Loss: 0.3972   F1 score: 0.7849
+Fold [2/5] - Epoch [44/70] - Loss: 0.3182: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 44 : 0.2554
+
+===== VALIDATION EPOCH 44/70 =====
+Epoch 44 Loss: 0.2899   F1 score: 0.8535
+Fold [2/5] - Epoch [45/70] - Loss: 0.1114: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 45 : 0.2340
+
+===== VALIDATION EPOCH 45/70 =====
+Epoch 45 Loss: 0.2932   F1 score: 0.8600
+Fold [2/5] - Epoch [46/70] - Loss: 0.3202: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 46 : 0.2188
+
+===== VALIDATION EPOCH 46/70 =====
+Epoch 46 Loss: 0.2594   F1 score: 0.8709
+-->[EPOCH BEST] New Best F1 score for Epoch 46
+Fold [2/5] - Epoch [47/70] - Loss: 0.1402: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 47 : 0.2137
+
+===== VALIDATION EPOCH 47/70 =====
+Epoch 47 Loss: 0.2057   F1 score: 0.9077
+-->[EPOCH BEST] New Best F1 score for Epoch 47
+Fold [2/5] - Epoch [48/70] - Loss: 0.2481: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 48 : 0.2136
+
+===== VALIDATION EPOCH 48/70 =====
+Epoch 48 Loss: 0.2305   F1 score: 0.8932
+Fold [2/5] - Epoch [49/70] - Loss: 0.0907: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 49 : 0.1917
+
+===== VALIDATION EPOCH 49/70 =====
+Epoch 49 Loss: 0.2194   F1 score: 0.9063
+Fold [2/5] - Epoch [50/70] - Loss: 0.1356: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 50 : 0.1928
+
+===== VALIDATION EPOCH 50/70 =====
+Epoch 50 Loss: 0.2608   F1 score: 0.8786
+Fold [2/5] - Epoch [51/70] - Loss: 0.2499: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 51 : 0.1826
+
+===== VALIDATION EPOCH 51/70 =====
+Epoch 51 Loss: 0.2417   F1 score: 0.8878
+Fold [2/5] - Epoch [52/70] - Loss: 0.1740: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 52 : 0.1695
+
+===== VALIDATION EPOCH 52/70 =====
+Epoch 52 Loss: 0.1962   F1 score: 0.9091
+-->[EPOCH BEST] New Best F1 score for Epoch 52
+Fold [2/5] - Epoch [53/70] - Loss: 0.3394: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 53 : 0.1652
+
+===== VALIDATION EPOCH 53/70 =====
+Epoch 53 Loss: 0.1686   F1 score: 0.9249
+-->[EPOCH BEST] New Best F1 score for Epoch 53
+Fold [2/5] - Epoch [54/70] - Loss: 0.2100: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 54 : 0.1591
+
+===== VALIDATION EPOCH 54/70 =====
+Epoch 54 Loss: 0.1904   F1 score: 0.9096
+Fold [2/5] - Epoch [55/70] - Loss: 0.3530: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 55 : 0.1497
+
+===== VALIDATION EPOCH 55/70 =====
+Epoch 55 Loss: 0.1598   F1 score: 0.9384
+-->[EPOCH BEST] New Best F1 score for Epoch 55
+Fold [2/5] - Epoch [56/70] - Loss: 0.2407: 100%|█| 167/167 [00:26<00:00,  6.29it
+--> Loss for epoch 56 : 0.1422
+
+===== VALIDATION EPOCH 56/70 =====
+Epoch 56 Loss: 0.1912   F1 score: 0.9178
+Fold [2/5] - Epoch [57/70] - Loss: 0.1976: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 57 : 0.1400
+
+===== VALIDATION EPOCH 57/70 =====
+Epoch 57 Loss: 0.1575   F1 score: 0.9308
+Fold [2/5] - Epoch [58/70] - Loss: 0.1284: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 58 : 0.1459
+
+===== VALIDATION EPOCH 58/70 =====
+Epoch 58 Loss: 0.1413   F1 score: 0.9432
+-->[EPOCH BEST] New Best F1 score for Epoch 58
+Fold [2/5] - Epoch [59/70] - Loss: 0.1457: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 59 : 0.1284
+
+===== VALIDATION EPOCH 59/70 =====
+Epoch 59 Loss: 0.2408   F1 score: 0.9015
+Fold [2/5] - Epoch [60/70] - Loss: 0.1400: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 60 : 0.1251
+
+===== VALIDATION EPOCH 60/70 =====
+Epoch 60 Loss: 0.1856   F1 score: 0.9198
+Fold [2/5] - Epoch [61/70] - Loss: 0.2291: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 61 : 0.1251
+
+===== VALIDATION EPOCH 61/70 =====
+Epoch 61 Loss: 0.1333   F1 score: 0.9446
+-->[EPOCH BEST] New Best F1 score for Epoch 61
+Fold [2/5] - Epoch [62/70] - Loss: 0.1814: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 62 : 0.1215
+
+===== VALIDATION EPOCH 62/70 =====
+Epoch 62 Loss: 0.1396   F1 score: 0.9458
+-->[EPOCH BEST] New Best F1 score for Epoch 62
+Fold [2/5] - Epoch [63/70] - Loss: 0.1461: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 63 : 0.1092
+
+===== VALIDATION EPOCH 63/70 =====
+Epoch 63 Loss: 0.1464   F1 score: 0.9377
+Fold [2/5] - Epoch [64/70] - Loss: 0.1778: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 64 : 0.1139
+
+===== VALIDATION EPOCH 64/70 =====
+Epoch 64 Loss: 0.1104   F1 score: 0.9575
+-->[EPOCH BEST] New Best F1 score for Epoch 64
+Fold [2/5] - Epoch [65/70] - Loss: 0.1653: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 65 : 0.1141
+
+===== VALIDATION EPOCH 65/70 =====
+Epoch 65 Loss: 0.1259   F1 score: 0.9458
+Fold [2/5] - Epoch [66/70] - Loss: 0.0691: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 66 : 0.1051
+
+===== VALIDATION EPOCH 66/70 =====
+Epoch 66 Loss: 0.1439   F1 score: 0.9314
+Fold [2/5] - Epoch [67/70] - Loss: 0.1447: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 67 : 0.1031
+
+===== VALIDATION EPOCH 67/70 =====
+Epoch 67 Loss: 0.1713   F1 score: 0.9246
+Fold [2/5] - Epoch [68/70] - Loss: 0.0833: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 68 : 0.1005
+
+===== VALIDATION EPOCH 68/70 =====
+Epoch 68 Loss: 0.1513   F1 score: 0.9337
+Fold [2/5] - Epoch [69/70] - Loss: 0.0363: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 69 : 0.0996
+
+===== VALIDATION EPOCH 69/70 =====
+Epoch 69 Loss: 0.1392   F1 score: 0.9343
+Fold [2/5] - Epoch [70/70] - Loss: 0.1129: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 70 : 0.0928
+
+===== VALIDATION EPOCH 70/70 =====
+Epoch 70 Loss: 0.0955   F1 score: 0.9624
+-->[EPOCH BEST] New Best F1 score for Epoch 70
+
+==================== TEST FOLD 2/5 ====================
+--> [GLOBAL BEST] New Best checkpoint found in Fold 2!
+Fold 2 Loss: 0.2719  F1 score: 0.8861
+
+==================== TRAIN FOLD 3/5 ====================
+Start training for Fold 3
+Fold [3/5] - Epoch [1/70] - Loss: 3.4292: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 1 : 3.5901
+
+===== VALIDATION EPOCH 1/70 =====
+Epoch 1 Loss: 3.4554   F1 score: 0.0211
+-->[EPOCH BEST] New Best F1 score for Epoch 1
+Fold [3/5] - Epoch [2/70] - Loss: 3.1172: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 2 : 3.2961
+
+===== VALIDATION EPOCH 2/70 =====
+Epoch 2 Loss: 3.1568   F1 score: 0.0540
+-->[EPOCH BEST] New Best F1 score for Epoch 2
+Fold [3/5] - Epoch [3/70] - Loss: 2.7935: 100%|█| 167/167 [00:26<00:00,  6.26it/
+--> Loss for epoch 3 : 2.9825
+
+===== VALIDATION EPOCH 3/70 =====
+Epoch 3 Loss: 2.8984   F1 score: 0.0647
+-->[EPOCH BEST] New Best F1 score for Epoch 3
+Fold [3/5] - Epoch [4/70] - Loss: 2.6429: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 4 : 2.6736
+
+===== VALIDATION EPOCH 4/70 =====
+Epoch 4 Loss: 2.5699   F1 score: 0.0847
+-->[EPOCH BEST] New Best F1 score for Epoch 4
+Fold [3/5] - Epoch [5/70] - Loss: 2.2836: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 5 : 2.4047
+
+===== VALIDATION EPOCH 5/70 =====
+Epoch 5 Loss: 2.3451   F1 score: 0.1032
+-->[EPOCH BEST] New Best F1 score for Epoch 5
+Fold [3/5] - Epoch [6/70] - Loss: 2.0468: 100%|█| 167/167 [00:26<00:00,  6.28it/
+--> Loss for epoch 6 : 2.1895
+
+===== VALIDATION EPOCH 6/70 =====
+Epoch 6 Loss: 2.1502   F1 score: 0.1237
+-->[EPOCH BEST] New Best F1 score for Epoch 6
+Fold [3/5] - Epoch [7/70] - Loss: 2.0409: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 7 : 2.0449
+
+===== VALIDATION EPOCH 7/70 =====
+Epoch 7 Loss: 1.9715   F1 score: 0.1487
+-->[EPOCH BEST] New Best F1 score for Epoch 7
+Fold [3/5] - Epoch [8/70] - Loss: 2.0436: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 8 : 1.9257
+
+===== VALIDATION EPOCH 8/70 =====
+Epoch 8 Loss: 1.9268   F1 score: 0.1430
+Fold [3/5] - Epoch [9/70] - Loss: 1.5770: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 9 : 1.8306
+
+===== VALIDATION EPOCH 9/70 =====
+Epoch 9 Loss: 1.8124   F1 score: 0.1866
+-->[EPOCH BEST] New Best F1 score for Epoch 9
+Fold [3/5] - Epoch [10/70] - Loss: 1.7818: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 10 : 1.7387
+
+===== VALIDATION EPOCH 10/70 =====
+Epoch 10 Loss: 1.7254   F1 score: 0.1988
+-->[EPOCH BEST] New Best F1 score for Epoch 10
+Fold [3/5] - Epoch [11/70] - Loss: 1.4647: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 11 : 1.6611
+
+===== VALIDATION EPOCH 11/70 =====
+Epoch 11 Loss: 1.7121   F1 score: 0.2041
+-->[EPOCH BEST] New Best F1 score for Epoch 11
+Fold [3/5] - Epoch [12/70] - Loss: 1.5904: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 12 : 1.5965
+
+===== VALIDATION EPOCH 12/70 =====
+Epoch 12 Loss: 1.6147   F1 score: 0.2306
+-->[EPOCH BEST] New Best F1 score for Epoch 12
+Fold [3/5] - Epoch [13/70] - Loss: 1.5964: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 13 : 1.5309
+
+===== VALIDATION EPOCH 13/70 =====
+Epoch 13 Loss: 1.5477   F1 score: 0.2440
+-->[EPOCH BEST] New Best F1 score for Epoch 13
+Fold [3/5] - Epoch [14/70] - Loss: 1.4495: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 14 : 1.4753
+
+===== VALIDATION EPOCH 14/70 =====
+Epoch 14 Loss: 1.4707   F1 score: 0.2563
+-->[EPOCH BEST] New Best F1 score for Epoch 14
+Fold [3/5] - Epoch [15/70] - Loss: 1.5211: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 15 : 1.4230
+
+===== VALIDATION EPOCH 15/70 =====
+Epoch 15 Loss: 1.4265   F1 score: 0.2717
+-->[EPOCH BEST] New Best F1 score for Epoch 15
+Fold [3/5] - Epoch [16/70] - Loss: 1.5238: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 16 : 1.3741
+
+===== VALIDATION EPOCH 16/70 =====
+Epoch 16 Loss: 1.3825   F1 score: 0.2891
+-->[EPOCH BEST] New Best F1 score for Epoch 16
+Fold [3/5] - Epoch [17/70] - Loss: 1.3183: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 17 : 1.3125
+
+===== VALIDATION EPOCH 17/70 =====
+Epoch 17 Loss: 1.4004   F1 score: 0.2997
+-->[EPOCH BEST] New Best F1 score for Epoch 17
+Fold [3/5] - Epoch [18/70] - Loss: 1.1088: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 18 : 1.2569
+
+===== VALIDATION EPOCH 18/70 =====
+Epoch 18 Loss: 1.2783   F1 score: 0.3559
+-->[EPOCH BEST] New Best F1 score for Epoch 18
+Fold [3/5] - Epoch [19/70] - Loss: 1.1825: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 19 : 1.1905
+
+===== VALIDATION EPOCH 19/70 =====
+Epoch 19 Loss: 1.2136   F1 score: 0.3816
+-->[EPOCH BEST] New Best F1 score for Epoch 19
+Fold [3/5] - Epoch [20/70] - Loss: 1.0364: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 20 : 1.1274
+
+===== VALIDATION EPOCH 20/70 =====
+Epoch 20 Loss: 1.2937   F1 score: 0.4122
+-->[EPOCH BEST] New Best F1 score for Epoch 20
+Fold [3/5] - Epoch [21/70] - Loss: 0.8552: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 21 : 1.0614
+
+===== VALIDATION EPOCH 21/70 =====
+Epoch 21 Loss: 1.0835   F1 score: 0.4448
+-->[EPOCH BEST] New Best F1 score for Epoch 21
+Fold [3/5] - Epoch [22/70] - Loss: 0.8864: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 22 : 0.9974
+
+===== VALIDATION EPOCH 22/70 =====
+Epoch 22 Loss: 0.9858   F1 score: 0.4979
+-->[EPOCH BEST] New Best F1 score for Epoch 22
+Fold [3/5] - Epoch [23/70] - Loss: 1.1692: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 23 : 0.9313
+
+===== VALIDATION EPOCH 23/70 =====
+Epoch 23 Loss: 0.9978   F1 score: 0.5088
+-->[EPOCH BEST] New Best F1 score for Epoch 23
+Fold [3/5] - Epoch [24/70] - Loss: 0.8024: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 24 : 0.8826
+
+===== VALIDATION EPOCH 24/70 =====
+Epoch 24 Loss: 0.9146   F1 score: 0.5271
+-->[EPOCH BEST] New Best F1 score for Epoch 24
+Fold [3/5] - Epoch [25/70] - Loss: 0.7931: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 25 : 0.8308
+
+===== VALIDATION EPOCH 25/70 =====
+Epoch 25 Loss: 0.8301   F1 score: 0.5651
+-->[EPOCH BEST] New Best F1 score for Epoch 25
+Fold [3/5] - Epoch [26/70] - Loss: 0.8839: 100%|█| 167/167 [00:27<00:00,  6.06it
+--> Loss for epoch 26 : 0.7781
+
+===== VALIDATION EPOCH 26/70 =====
+Epoch 26 Loss: 0.9402   F1 score: 0.5047
+Fold [3/5] - Epoch [27/70] - Loss: 0.7896: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 27 : 0.7366
+
+===== VALIDATION EPOCH 27/70 =====
+Epoch 27 Loss: 1.0954   F1 score: 0.4841
+Fold [3/5] - Epoch [28/70] - Loss: 0.8955: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 28 : 0.6955
+
+===== VALIDATION EPOCH 28/70 =====
+Epoch 28 Loss: 0.7840   F1 score: 0.5909
+-->[EPOCH BEST] New Best F1 score for Epoch 28
+Fold [3/5] - Epoch [29/70] - Loss: 0.5679: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 29 : 0.6572
+
+===== VALIDATION EPOCH 29/70 =====
+Epoch 29 Loss: 0.8009   F1 score: 0.6103
+-->[EPOCH BEST] New Best F1 score for Epoch 29
+Fold [3/5] - Epoch [30/70] - Loss: 0.7539: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 30 : 0.6188
+
+===== VALIDATION EPOCH 30/70 =====
+Epoch 30 Loss: 0.9478   F1 score: 0.5523
+Fold [3/5] - Epoch [31/70] - Loss: 0.6288: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 31 : 0.5807
+
+===== VALIDATION EPOCH 31/70 =====
+Epoch 31 Loss: 0.5773   F1 score: 0.6968
+-->[EPOCH BEST] New Best F1 score for Epoch 31
+Fold [3/5] - Epoch [32/70] - Loss: 0.6438: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 32 : 0.5578
+
+===== VALIDATION EPOCH 32/70 =====
+Epoch 32 Loss: 0.6026   F1 score: 0.6701
+Fold [3/5] - Epoch [33/70] - Loss: 0.5562: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 33 : 0.5203
+
+===== VALIDATION EPOCH 33/70 =====
+Epoch 33 Loss: 0.6400   F1 score: 0.6623
+Fold [3/5] - Epoch [34/70] - Loss: 0.4526: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 34 : 0.4823
+
+===== VALIDATION EPOCH 34/70 =====
+Epoch 34 Loss: 0.5135   F1 score: 0.7128
+-->[EPOCH BEST] New Best F1 score for Epoch 34
+Fold [3/5] - Epoch [35/70] - Loss: 0.4290: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 35 : 0.4619
+
+===== VALIDATION EPOCH 35/70 =====
+Epoch 35 Loss: 0.5074   F1 score: 0.7259
+-->[EPOCH BEST] New Best F1 score for Epoch 35
+Fold [3/5] - Epoch [36/70] - Loss: 0.4783: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 36 : 0.4286
+
+===== VALIDATION EPOCH 36/70 =====
+Epoch 36 Loss: 0.5978   F1 score: 0.6956
+Fold [3/5] - Epoch [37/70] - Loss: 0.3676: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 37 : 0.4072
+
+===== VALIDATION EPOCH 37/70 =====
+Epoch 37 Loss: 0.4856   F1 score: 0.7620
+-->[EPOCH BEST] New Best F1 score for Epoch 37
+Fold [3/5] - Epoch [38/70] - Loss: 0.2601: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 38 : 0.3762
+
+===== VALIDATION EPOCH 38/70 =====
+Epoch 38 Loss: 0.5044   F1 score: 0.7258
+Fold [3/5] - Epoch [39/70] - Loss: 0.2678: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 39 : 0.3640
+
+===== VALIDATION EPOCH 39/70 =====
+Epoch 39 Loss: 0.4196   F1 score: 0.8122
+-->[EPOCH BEST] New Best F1 score for Epoch 39
+Fold [3/5] - Epoch [40/70] - Loss: 0.3813: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 40 : 0.3410
+
+===== VALIDATION EPOCH 40/70 =====
+Epoch 40 Loss: 0.4188   F1 score: 0.7833
+Fold [3/5] - Epoch [41/70] - Loss: 0.2550: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 41 : 0.3224
+
+===== VALIDATION EPOCH 41/70 =====
+Epoch 41 Loss: 0.3565   F1 score: 0.8216
+-->[EPOCH BEST] New Best F1 score for Epoch 41
+Fold [3/5] - Epoch [42/70] - Loss: 0.3990: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 42 : 0.3081
+
+===== VALIDATION EPOCH 42/70 =====
+Epoch 42 Loss: 0.4343   F1 score: 0.8038
+Fold [3/5] - Epoch [43/70] - Loss: 0.4370: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 43 : 0.2902
+
+===== VALIDATION EPOCH 43/70 =====
+Epoch 43 Loss: 0.4840   F1 score: 0.7762
+Fold [3/5] - Epoch [44/70] - Loss: 0.2503: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 44 : 0.2701
+
+===== VALIDATION EPOCH 44/70 =====
+Epoch 44 Loss: 0.3251   F1 score: 0.8463
+-->[EPOCH BEST] New Best F1 score for Epoch 44
+Fold [3/5] - Epoch [45/70] - Loss: 0.3309: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 45 : 0.2693
+
+===== VALIDATION EPOCH 45/70 =====
+Epoch 45 Loss: 0.2746   F1 score: 0.8891
+-->[EPOCH BEST] New Best F1 score for Epoch 45
+Fold [3/5] - Epoch [46/70] - Loss: 0.1633: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 46 : 0.2487
+
+===== VALIDATION EPOCH 46/70 =====
+Epoch 46 Loss: 0.2877   F1 score: 0.8802
+Fold [3/5] - Epoch [47/70] - Loss: 0.2048: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 47 : 0.2404
+
+===== VALIDATION EPOCH 47/70 =====
+Epoch 47 Loss: 0.3283   F1 score: 0.8237
+Fold [3/5] - Epoch [48/70] - Loss: 0.2899: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 48 : 0.2230
+
+===== VALIDATION EPOCH 48/70 =====
+Epoch 48 Loss: 0.3216   F1 score: 0.8490
+Fold [3/5] - Epoch [49/70] - Loss: 0.2362: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 49 : 0.2169
+
+===== VALIDATION EPOCH 49/70 =====
+Epoch 49 Loss: 0.5272   F1 score: 0.7457
+Fold [3/5] - Epoch [50/70] - Loss: 0.4256: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 50 : 0.2028
+
+===== VALIDATION EPOCH 50/70 =====
+Epoch 50 Loss: 0.2369   F1 score: 0.8928
+-->[EPOCH BEST] New Best F1 score for Epoch 50
+Fold [3/5] - Epoch [51/70] - Loss: 0.1115: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 51 : 0.2016
+
+===== VALIDATION EPOCH 51/70 =====
+Epoch 51 Loss: 0.2414   F1 score: 0.8844
+Fold [3/5] - Epoch [52/70] - Loss: 0.1699: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 52 : 0.1968
+
+===== VALIDATION EPOCH 52/70 =====
+Epoch 52 Loss: 0.2528   F1 score: 0.8812
+Fold [3/5] - Epoch [53/70] - Loss: 0.2916: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 53 : 0.1881
+
+===== VALIDATION EPOCH 53/70 =====
+Epoch 53 Loss: 0.2636   F1 score: 0.8584
+Fold [3/5] - Epoch [54/70] - Loss: 0.1423: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 54 : 0.1762
+
+===== VALIDATION EPOCH 54/70 =====
+Epoch 54 Loss: 0.2894   F1 score: 0.8628
+Fold [3/5] - Epoch [55/70] - Loss: 0.1267: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 55 : 0.1773
+
+===== VALIDATION EPOCH 55/70 =====
+Epoch 55 Loss: 0.2258   F1 score: 0.8978
+-->[EPOCH BEST] New Best F1 score for Epoch 55
+Fold [3/5] - Epoch [56/70] - Loss: 0.1279: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 56 : 0.1700
+
+===== VALIDATION EPOCH 56/70 =====
+Epoch 56 Loss: 0.2374   F1 score: 0.8861
+Fold [3/5] - Epoch [57/70] - Loss: 0.0858: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 57 : 0.1644
+
+===== VALIDATION EPOCH 57/70 =====
+Epoch 57 Loss: 0.2334   F1 score: 0.8958
+Fold [3/5] - Epoch [58/70] - Loss: 0.2111: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 58 : 0.1579
+
+===== VALIDATION EPOCH 58/70 =====
+Epoch 58 Loss: 0.1786   F1 score: 0.9318
+-->[EPOCH BEST] New Best F1 score for Epoch 58
+Fold [3/5] - Epoch [59/70] - Loss: 0.1490: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 59 : 0.1458
+
+===== VALIDATION EPOCH 59/70 =====
+Epoch 59 Loss: 0.2034   F1 score: 0.8926
+Fold [3/5] - Epoch [60/70] - Loss: 0.1688: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 60 : 0.1459
+
+===== VALIDATION EPOCH 60/70 =====
+Epoch 60 Loss: 0.1701   F1 score: 0.9286
+Fold [3/5] - Epoch [61/70] - Loss: 0.1094: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 61 : 0.1350
+
+===== VALIDATION EPOCH 61/70 =====
+Epoch 61 Loss: 0.1560   F1 score: 0.9426
+-->[EPOCH BEST] New Best F1 score for Epoch 61
+Fold [3/5] - Epoch [62/70] - Loss: 0.1788: 100%|█| 167/167 [00:26<00:00,  6.28it
+--> Loss for epoch 62 : 0.1436
+
+===== VALIDATION EPOCH 62/70 =====
+Epoch 62 Loss: 0.2261   F1 score: 0.9010
+Fold [3/5] - Epoch [63/70] - Loss: 0.1025: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 63 : 0.1369
+
+===== VALIDATION EPOCH 63/70 =====
+Epoch 63 Loss: 0.1802   F1 score: 0.9132
+Fold [3/5] - Epoch [64/70] - Loss: 0.2568: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 64 : 0.1306
+
+===== VALIDATION EPOCH 64/70 =====
+Epoch 64 Loss: 0.2050   F1 score: 0.9166
+Fold [3/5] - Epoch [65/70] - Loss: 0.3326: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 65 : 0.1308
+
+===== VALIDATION EPOCH 65/70 =====
+Epoch 65 Loss: 0.2375   F1 score: 0.8892
+Fold [3/5] - Epoch [66/70] - Loss: 0.0817: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 66 : 0.1254
+
+===== VALIDATION EPOCH 66/70 =====
+Epoch 66 Loss: 0.1391   F1 score: 0.9426
+-->[EPOCH BEST] New Best F1 score for Epoch 66
+Fold [3/5] - Epoch [67/70] - Loss: 0.1085: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 67 : 0.1096
+
+===== VALIDATION EPOCH 67/70 =====
+Epoch 67 Loss: 0.1790   F1 score: 0.9297
+Fold [3/5] - Epoch [68/70] - Loss: 0.2336: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 68 : 0.1188
+
+===== VALIDATION EPOCH 68/70 =====
+Epoch 68 Loss: 0.1568   F1 score: 0.9252
+Fold [3/5] - Epoch [69/70] - Loss: 0.0520: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 69 : 0.1107
+
+===== VALIDATION EPOCH 69/70 =====
+Epoch 69 Loss: 0.1360   F1 score: 0.9443
+-->[EPOCH BEST] New Best F1 score for Epoch 69
+Fold [3/5] - Epoch [70/70] - Loss: 0.1441: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 70 : 0.1085
+
+===== VALIDATION EPOCH 70/70 =====
+Epoch 70 Loss: 0.1221   F1 score: 0.9487
+-->[EPOCH BEST] New Best F1 score for Epoch 70
+
+==================== TEST FOLD 3/5 ====================
+Fold 3 Loss: 0.3034  F1 score: 0.8786
+
+==================== TRAIN FOLD 4/5 ====================
+Start training for Fold 4
+Fold [4/5] - Epoch [1/70] - Loss: 3.4398: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 1 : 3.5898
+
+===== VALIDATION EPOCH 1/70 =====
+Epoch 1 Loss: 3.4275   F1 score: 0.0227
+-->[EPOCH BEST] New Best F1 score for Epoch 1
+Fold [4/5] - Epoch [2/70] - Loss: 3.1923: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 2 : 3.2944
+
+===== VALIDATION EPOCH 2/70 =====
+Epoch 2 Loss: 3.1913   F1 score: 0.0317
+-->[EPOCH BEST] New Best F1 score for Epoch 2
+Fold [4/5] - Epoch [3/70] - Loss: 3.0683: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 3 : 3.0504
+
+===== VALIDATION EPOCH 3/70 =====
+Epoch 3 Loss: 2.9017   F1 score: 0.0636
+-->[EPOCH BEST] New Best F1 score for Epoch 3
+Fold [4/5] - Epoch [4/70] - Loss: 2.6181: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 4 : 2.7719
+
+===== VALIDATION EPOCH 4/70 =====
+Epoch 4 Loss: 2.6760   F1 score: 0.0752
+-->[EPOCH BEST] New Best F1 score for Epoch 4
+Fold [4/5] - Epoch [5/70] - Loss: 2.3473: 100%|█| 167/167 [00:26<00:00,  6.27it/
+--> Loss for epoch 5 : 2.5430
+
+===== VALIDATION EPOCH 5/70 =====
+Epoch 5 Loss: 2.4539   F1 score: 0.1223
+-->[EPOCH BEST] New Best F1 score for Epoch 5
+Fold [4/5] - Epoch [6/70] - Loss: 2.1778: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 6 : 2.3415
+
+===== VALIDATION EPOCH 6/70 =====
+Epoch 6 Loss: 2.2791   F1 score: 0.1299
+-->[EPOCH BEST] New Best F1 score for Epoch 6
+Fold [4/5] - Epoch [7/70] - Loss: 2.1120: 100%|█| 167/167 [00:26<00:00,  6.26it/
+--> Loss for epoch 7 : 2.1605
+
+===== VALIDATION EPOCH 7/70 =====
+Epoch 7 Loss: 2.1416   F1 score: 0.1527
+-->[EPOCH BEST] New Best F1 score for Epoch 7
+Fold [4/5] - Epoch [8/70] - Loss: 1.8780: 100%|█| 167/167 [00:26<00:00,  6.26it/
+--> Loss for epoch 8 : 2.0106
+
+===== VALIDATION EPOCH 8/70 =====
+Epoch 8 Loss: 1.9576   F1 score: 0.1716
+-->[EPOCH BEST] New Best F1 score for Epoch 8
+Fold [4/5] - Epoch [9/70] - Loss: 1.7541: 100%|█| 167/167 [00:26<00:00,  6.26it/
+--> Loss for epoch 9 : 1.8974
+
+===== VALIDATION EPOCH 9/70 =====
+Epoch 9 Loss: 1.8461   F1 score: 0.1925
+-->[EPOCH BEST] New Best F1 score for Epoch 9
+Fold [4/5] - Epoch [10/70] - Loss: 1.5200: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 10 : 1.7850
+
+===== VALIDATION EPOCH 10/70 =====
+Epoch 10 Loss: 1.7565   F1 score: 0.2101
+-->[EPOCH BEST] New Best F1 score for Epoch 10
+Fold [4/5] - Epoch [11/70] - Loss: 1.5539: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 11 : 1.6915
+
+===== VALIDATION EPOCH 11/70 =====
+Epoch 11 Loss: 1.6732   F1 score: 0.2263
+-->[EPOCH BEST] New Best F1 score for Epoch 11
+Fold [4/5] - Epoch [12/70] - Loss: 1.4463: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 12 : 1.6060
+
+===== VALIDATION EPOCH 12/70 =====
+Epoch 12 Loss: 1.5701   F1 score: 0.2507
+-->[EPOCH BEST] New Best F1 score for Epoch 12
+Fold [4/5] - Epoch [13/70] - Loss: 1.5288: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 13 : 1.5138
+
+===== VALIDATION EPOCH 13/70 =====
+Epoch 13 Loss: 1.5496   F1 score: 0.2767
+-->[EPOCH BEST] New Best F1 score for Epoch 13
+Fold [4/5] - Epoch [14/70] - Loss: 1.4438: 100%|█| 167/167 [00:26<00:00,  6.27it
+--> Loss for epoch 14 : 1.4227
+
+===== VALIDATION EPOCH 14/70 =====
+Epoch 14 Loss: 1.3900   F1 score: 0.3015
+-->[EPOCH BEST] New Best F1 score for Epoch 14
+Fold [4/5] - Epoch [15/70] - Loss: 1.2524: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 15 : 1.3437
+
+===== VALIDATION EPOCH 15/70 =====
+Epoch 15 Loss: 1.3516   F1 score: 0.3085
+-->[EPOCH BEST] New Best F1 score for Epoch 15
+Fold [4/5] - Epoch [16/70] - Loss: 1.0072: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 16 : 1.2494
+
+===== VALIDATION EPOCH 16/70 =====
+Epoch 16 Loss: 1.2179   F1 score: 0.3378
+-->[EPOCH BEST] New Best F1 score for Epoch 16
+Fold [4/5] - Epoch [17/70] - Loss: 1.0570: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 17 : 1.1591
+
+===== VALIDATION EPOCH 17/70 =====
+Epoch 17 Loss: 1.1391   F1 score: 0.3865
+-->[EPOCH BEST] New Best F1 score for Epoch 17
+Fold [4/5] - Epoch [18/70] - Loss: 1.1976: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 18 : 1.0861
+
+===== VALIDATION EPOCH 18/70 =====
+Epoch 18 Loss: 1.0590   F1 score: 0.4080
+-->[EPOCH BEST] New Best F1 score for Epoch 18
+Fold [4/5] - Epoch [19/70] - Loss: 1.0315: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 19 : 0.9962
+
+===== VALIDATION EPOCH 19/70 =====
+Epoch 19 Loss: 0.9869   F1 score: 0.4438
+-->[EPOCH BEST] New Best F1 score for Epoch 19
+Fold [4/5] - Epoch [20/70] - Loss: 1.1060: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 20 : 0.9203
+
+===== VALIDATION EPOCH 20/70 =====
+Epoch 20 Loss: 0.9231   F1 score: 0.4701
+-->[EPOCH BEST] New Best F1 score for Epoch 20
+Fold [4/5] - Epoch [21/70] - Loss: 0.9368: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 21 : 0.8479
+
+===== VALIDATION EPOCH 21/70 =====
+Epoch 21 Loss: 0.8534   F1 score: 0.4976
+-->[EPOCH BEST] New Best F1 score for Epoch 21
+Fold [4/5] - Epoch [22/70] - Loss: 0.7248: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 22 : 0.7835
+
+===== VALIDATION EPOCH 22/70 =====
+Epoch 22 Loss: 0.8584   F1 score: 0.4950
+Fold [4/5] - Epoch [23/70] - Loss: 0.7201: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 23 : 0.7353
+
+===== VALIDATION EPOCH 23/70 =====
+Epoch 23 Loss: 0.7365   F1 score: 0.5782
+-->[EPOCH BEST] New Best F1 score for Epoch 23
+Fold [4/5] - Epoch [24/70] - Loss: 0.5344: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 24 : 0.6858
+
+===== VALIDATION EPOCH 24/70 =====
+Epoch 24 Loss: 0.7804   F1 score: 0.5425
+Fold [4/5] - Epoch [25/70] - Loss: 0.6525: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 25 : 0.6374
+
+===== VALIDATION EPOCH 25/70 =====
+Epoch 25 Loss: 0.6727   F1 score: 0.5927
+-->[EPOCH BEST] New Best F1 score for Epoch 25
+Fold [4/5] - Epoch [26/70] - Loss: 0.6222: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 26 : 0.5868
+
+===== VALIDATION EPOCH 26/70 =====
+Epoch 26 Loss: 0.5976   F1 score: 0.6333
+-->[EPOCH BEST] New Best F1 score for Epoch 26
+Fold [4/5] - Epoch [27/70] - Loss: 0.6478: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 27 : 0.5516
+
+===== VALIDATION EPOCH 27/70 =====
+Epoch 27 Loss: 0.5547   F1 score: 0.6460
+-->[EPOCH BEST] New Best F1 score for Epoch 27
+Fold [4/5] - Epoch [28/70] - Loss: 0.3833: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 28 : 0.5154
+
+===== VALIDATION EPOCH 28/70 =====
+Epoch 28 Loss: 0.5309   F1 score: 0.6716
+-->[EPOCH BEST] New Best F1 score for Epoch 28
+Fold [4/5] - Epoch [29/70] - Loss: 0.5839: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 29 : 0.4818
+
+===== VALIDATION EPOCH 29/70 =====
+Epoch 29 Loss: 0.5321   F1 score: 0.6738
+-->[EPOCH BEST] New Best F1 score for Epoch 29
+Fold [4/5] - Epoch [30/70] - Loss: 0.5198: 100%|█| 167/167 [00:27<00:00,  6.02it
+--> Loss for epoch 30 : 0.4603
+
+===== VALIDATION EPOCH 30/70 =====
+Epoch 30 Loss: 0.4973   F1 score: 0.7124
+-->[EPOCH BEST] New Best F1 score for Epoch 30
+Fold [4/5] - Epoch [31/70] - Loss: 0.2873: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 31 : 0.4311
+
+===== VALIDATION EPOCH 31/70 =====
+Epoch 31 Loss: 0.4751   F1 score: 0.7350
+-->[EPOCH BEST] New Best F1 score for Epoch 31
+Fold [4/5] - Epoch [32/70] - Loss: 0.2138: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 32 : 0.4012
+
+===== VALIDATION EPOCH 32/70 =====
+Epoch 32 Loss: 0.4269   F1 score: 0.7351
+-->[EPOCH BEST] New Best F1 score for Epoch 32
+Fold [4/5] - Epoch [33/70] - Loss: 0.6200: 100%|█| 167/167 [00:26<00:00,  6.22it
+--> Loss for epoch 33 : 0.3779
+
+===== VALIDATION EPOCH 33/70 =====
+Epoch 33 Loss: 0.4009   F1 score: 0.7735
+-->[EPOCH BEST] New Best F1 score for Epoch 33
+Fold [4/5] - Epoch [34/70] - Loss: 0.3702: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 34 : 0.3537
+
+===== VALIDATION EPOCH 34/70 =====
+Epoch 34 Loss: 0.3391   F1 score: 0.8212
+-->[EPOCH BEST] New Best F1 score for Epoch 34
+Fold [4/5] - Epoch [35/70] - Loss: 0.3152: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 35 : 0.3345
+
+===== VALIDATION EPOCH 35/70 =====
+Epoch 35 Loss: 0.3464   F1 score: 0.8108
+Fold [4/5] - Epoch [36/70] - Loss: 0.3529: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 36 : 0.3142
+
+===== VALIDATION EPOCH 36/70 =====
+Epoch 36 Loss: 0.3470   F1 score: 0.8186
+Fold [4/5] - Epoch [37/70] - Loss: 0.2342: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 37 : 0.2988
+
+===== VALIDATION EPOCH 37/70 =====
+Epoch 37 Loss: 0.3031   F1 score: 0.8358
+-->[EPOCH BEST] New Best F1 score for Epoch 37
+Fold [4/5] - Epoch [38/70] - Loss: 0.2649: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 38 : 0.2834
+
+===== VALIDATION EPOCH 38/70 =====
+Epoch 38 Loss: 0.2750   F1 score: 0.8711
+-->[EPOCH BEST] New Best F1 score for Epoch 38
+Fold [4/5] - Epoch [39/70] - Loss: 0.2199: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 39 : 0.2618
+
+===== VALIDATION EPOCH 39/70 =====
+Epoch 39 Loss: 0.2811   F1 score: 0.8430
+Fold [4/5] - Epoch [40/70] - Loss: 0.2420: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 40 : 0.2476
+
+===== VALIDATION EPOCH 40/70 =====
+Epoch 40 Loss: 0.2611   F1 score: 0.8632
+Fold [4/5] - Epoch [41/70] - Loss: 0.2454: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 41 : 0.2352
+
+===== VALIDATION EPOCH 41/70 =====
+Epoch 41 Loss: 0.3108   F1 score: 0.8655
+Fold [4/5] - Epoch [42/70] - Loss: 0.2973: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 42 : 0.2259
+
+===== VALIDATION EPOCH 42/70 =====
+Epoch 42 Loss: 0.2799   F1 score: 0.8786
+-->[EPOCH BEST] New Best F1 score for Epoch 42
+Fold [4/5] - Epoch [43/70] - Loss: 0.2596: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 43 : 0.2113
+
+===== VALIDATION EPOCH 43/70 =====
+Epoch 43 Loss: 0.2382   F1 score: 0.8959
+-->[EPOCH BEST] New Best F1 score for Epoch 43
+Fold [4/5] - Epoch [44/70] - Loss: 0.1181: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 44 : 0.2054
+
+===== VALIDATION EPOCH 44/70 =====
+Epoch 44 Loss: 0.2373   F1 score: 0.8960
+-->[EPOCH BEST] New Best F1 score for Epoch 44
+Fold [4/5] - Epoch [45/70] - Loss: 0.1763: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 45 : 0.1842
+
+===== VALIDATION EPOCH 45/70 =====
+Epoch 45 Loss: 0.2029   F1 score: 0.9092
+-->[EPOCH BEST] New Best F1 score for Epoch 45
+Fold [4/5] - Epoch [46/70] - Loss: 0.1709: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 46 : 0.1874
+
+===== VALIDATION EPOCH 46/70 =====
+Epoch 46 Loss: 0.1988   F1 score: 0.9145
+-->[EPOCH BEST] New Best F1 score for Epoch 46
+Fold [4/5] - Epoch [47/70] - Loss: 0.2318: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 47 : 0.1762
+
+===== VALIDATION EPOCH 47/70 =====
+Epoch 47 Loss: 0.2944   F1 score: 0.8427
+Fold [4/5] - Epoch [48/70] - Loss: 0.2394: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 48 : 0.1679
+
+===== VALIDATION EPOCH 48/70 =====
+Epoch 48 Loss: 0.1785   F1 score: 0.9140
+Fold [4/5] - Epoch [49/70] - Loss: 0.1176: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 49 : 0.1672
+
+===== VALIDATION EPOCH 49/70 =====
+Epoch 49 Loss: 0.1956   F1 score: 0.9151
+-->[EPOCH BEST] New Best F1 score for Epoch 49
+Fold [4/5] - Epoch [50/70] - Loss: 0.1682: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 50 : 0.1531
+
+===== VALIDATION EPOCH 50/70 =====
+Epoch 50 Loss: 0.2203   F1 score: 0.9102
+Fold [4/5] - Epoch [51/70] - Loss: 0.1956: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 51 : 0.1501
+
+===== VALIDATION EPOCH 51/70 =====
+Epoch 51 Loss: 0.1638   F1 score: 0.9303
+-->[EPOCH BEST] New Best F1 score for Epoch 51
+Fold [4/5] - Epoch [52/70] - Loss: 0.1250: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 52 : 0.1405
+
+===== VALIDATION EPOCH 52/70 =====
+Epoch 52 Loss: 0.1792   F1 score: 0.9279
+Fold [4/5] - Epoch [53/70] - Loss: 0.1859: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 53 : 0.1383
+
+===== VALIDATION EPOCH 53/70 =====
+Epoch 53 Loss: 0.1706   F1 score: 0.9295
+Fold [4/5] - Epoch [54/70] - Loss: 0.1714: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 54 : 0.1335
+
+===== VALIDATION EPOCH 54/70 =====
+Epoch 54 Loss: 0.2179   F1 score: 0.9006
+Fold [4/5] - Epoch [55/70] - Loss: 0.1855: 100%|█| 167/167 [00:27<00:00,  6.08it
+--> Loss for epoch 55 : 0.1222
+
+===== VALIDATION EPOCH 55/70 =====
+Epoch 55 Loss: 0.1506   F1 score: 0.9347
+-->[EPOCH BEST] New Best F1 score for Epoch 55
+Fold [4/5] - Epoch [56/70] - Loss: 0.1140: 100%|█| 167/167 [00:26<00:00,  6.22it
+--> Loss for epoch 56 : 0.1207
+
+===== VALIDATION EPOCH 56/70 =====
+Epoch 56 Loss: 0.1238   F1 score: 0.9466
+-->[EPOCH BEST] New Best F1 score for Epoch 56
+Fold [4/5] - Epoch [57/70] - Loss: 0.0513: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 57 : 0.1222
+
+===== VALIDATION EPOCH 57/70 =====
+Epoch 57 Loss: 0.1437   F1 score: 0.9431
+Fold [4/5] - Epoch [58/70] - Loss: 0.2453: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 58 : 0.1232
+
+===== VALIDATION EPOCH 58/70 =====
+Epoch 58 Loss: 0.2165   F1 score: 0.9004
+Fold [4/5] - Epoch [59/70] - Loss: 0.1084: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 59 : 0.1198
+
+===== VALIDATION EPOCH 59/70 =====
+Epoch 59 Loss: 0.1409   F1 score: 0.9430
+Fold [4/5] - Epoch [60/70] - Loss: 0.0287: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 60 : 0.1072
+
+===== VALIDATION EPOCH 60/70 =====
+Epoch 60 Loss: 0.1285   F1 score: 0.9437
+Fold [4/5] - Epoch [61/70] - Loss: 0.2803: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 61 : 0.1053
+
+===== VALIDATION EPOCH 61/70 =====
+Epoch 61 Loss: 0.1165   F1 score: 0.9476
+-->[EPOCH BEST] New Best F1 score for Epoch 61
+Fold [4/5] - Epoch [62/70] - Loss: 0.0840: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 62 : 0.1132
+
+===== VALIDATION EPOCH 62/70 =====
+Epoch 62 Loss: 0.1063   F1 score: 0.9506
+-->[EPOCH BEST] New Best F1 score for Epoch 62
+Fold [4/5] - Epoch [63/70] - Loss: 0.1228: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 63 : 0.0939
+
+===== VALIDATION EPOCH 63/70 =====
+Epoch 63 Loss: 0.1678   F1 score: 0.9285
+Fold [4/5] - Epoch [64/70] - Loss: 0.0968: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 64 : 0.1005
+
+===== VALIDATION EPOCH 64/70 =====
+Epoch 64 Loss: 0.1195   F1 score: 0.9513
+-->[EPOCH BEST] New Best F1 score for Epoch 64
+Fold [4/5] - Epoch [65/70] - Loss: 0.2713: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 65 : 0.0990
+
+===== VALIDATION EPOCH 65/70 =====
+Epoch 65 Loss: 0.1327   F1 score: 0.9460
+Fold [4/5] - Epoch [66/70] - Loss: 0.3835: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 66 : 0.0977
+
+===== VALIDATION EPOCH 66/70 =====
+Epoch 66 Loss: 0.1078   F1 score: 0.9599
+-->[EPOCH BEST] New Best F1 score for Epoch 66
+Fold [4/5] - Epoch [67/70] - Loss: 0.0591: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 67 : 0.0947
+
+===== VALIDATION EPOCH 67/70 =====
+Epoch 67 Loss: 0.1101   F1 score: 0.9508
+Fold [4/5] - Epoch [68/70] - Loss: 0.0967: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 68 : 0.0914
+
+===== VALIDATION EPOCH 68/70 =====
+Epoch 68 Loss: 0.1182   F1 score: 0.9571
+Fold [4/5] - Epoch [69/70] - Loss: 0.0511: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 69 : 0.0901
+
+===== VALIDATION EPOCH 69/70 =====
+Epoch 69 Loss: 0.2244   F1 score: 0.8931
+Fold [4/5] - Epoch [70/70] - Loss: 0.0457: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 70 : 0.0865
+
+===== VALIDATION EPOCH 70/70 =====
+Epoch 70 Loss: 0.1055   F1 score: 0.9580
+
+==================== TEST FOLD 4/5 ====================
+Fold 4 Loss: 0.3291  F1 score: 0.8734
+
+==================== TRAIN FOLD 5/5 ====================
+Start training for Fold 5
+Fold [5/5] - Epoch [1/70] - Loss: 3.4556: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 1 : 3.6047
+
+===== VALIDATION EPOCH 1/70 =====
+Epoch 1 Loss: 3.5004   F1 score: 0.0157
+-->[EPOCH BEST] New Best F1 score for Epoch 1
+Fold [5/5] - Epoch [2/70] - Loss: 3.3349: 100%|█| 167/167 [00:26<00:00,  6.24it/
+--> Loss for epoch 2 : 3.4244
+
+===== VALIDATION EPOCH 2/70 =====
+Epoch 2 Loss: 3.3328   F1 score: 0.0328
+-->[EPOCH BEST] New Best F1 score for Epoch 2
+Fold [5/5] - Epoch [3/70] - Loss: 3.1151: 100%|█| 167/167 [00:26<00:00,  6.24it/
+--> Loss for epoch 3 : 3.1940
+
+===== VALIDATION EPOCH 3/70 =====
+Epoch 3 Loss: 3.1295   F1 score: 0.0507
+-->[EPOCH BEST] New Best F1 score for Epoch 3
+Fold [5/5] - Epoch [4/70] - Loss: 2.6669: 100%|█| 167/167 [00:26<00:00,  6.24it/
+--> Loss for epoch 4 : 2.9044
+
+===== VALIDATION EPOCH 4/70 =====
+Epoch 4 Loss: 2.7677   F1 score: 0.0749
+-->[EPOCH BEST] New Best F1 score for Epoch 4
+Fold [5/5] - Epoch [5/70] - Loss: 2.3572: 100%|█| 167/167 [00:26<00:00,  6.25it/
+--> Loss for epoch 5 : 2.5758
+
+===== VALIDATION EPOCH 5/70 =====
+Epoch 5 Loss: 2.4628   F1 score: 0.1261
+-->[EPOCH BEST] New Best F1 score for Epoch 5
+Fold [5/5] - Epoch [6/70] - Loss: 2.1310: 100%|█| 167/167 [00:26<00:00,  6.23it/
+--> Loss for epoch 6 : 2.2991
+
+===== VALIDATION EPOCH 6/70 =====
+Epoch 6 Loss: 2.2418   F1 score: 0.1411
+-->[EPOCH BEST] New Best F1 score for Epoch 6
+Fold [5/5] - Epoch [7/70] - Loss: 2.0914: 100%|█| 167/167 [00:26<00:00,  6.24it/
+--> Loss for epoch 7 : 2.1085
+
+===== VALIDATION EPOCH 7/70 =====
+Epoch 7 Loss: 2.0417   F1 score: 0.1689
+-->[EPOCH BEST] New Best F1 score for Epoch 7
+Fold [5/5] - Epoch [8/70] - Loss: 1.7946: 100%|█| 167/167 [00:26<00:00,  6.23it/
+--> Loss for epoch 8 : 1.9763
+
+===== VALIDATION EPOCH 8/70 =====
+Epoch 8 Loss: 1.9545   F1 score: 0.1767
+-->[EPOCH BEST] New Best F1 score for Epoch 8
+Fold [5/5] - Epoch [9/70] - Loss: 1.6379: 100%|█| 167/167 [00:26<00:00,  6.23it/
+--> Loss for epoch 9 : 1.8521
+
+===== VALIDATION EPOCH 9/70 =====
+Epoch 9 Loss: 1.8640   F1 score: 0.1988
+-->[EPOCH BEST] New Best F1 score for Epoch 9
+Fold [5/5] - Epoch [10/70] - Loss: 1.8559: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 10 : 1.7575
+
+===== VALIDATION EPOCH 10/70 =====
+Epoch 10 Loss: 1.7568   F1 score: 0.2206
+-->[EPOCH BEST] New Best F1 score for Epoch 10
+Fold [5/5] - Epoch [11/70] - Loss: 1.7676: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 11 : 1.6653
+
+===== VALIDATION EPOCH 11/70 =====
+Epoch 11 Loss: 1.6635   F1 score: 0.2190
+Fold [5/5] - Epoch [12/70] - Loss: 1.5978: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 12 : 1.5918
+
+===== VALIDATION EPOCH 12/70 =====
+Epoch 12 Loss: 1.5550   F1 score: 0.2442
+-->[EPOCH BEST] New Best F1 score for Epoch 12
+Fold [5/5] - Epoch [13/70] - Loss: 1.6136: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 13 : 1.5004
+
+===== VALIDATION EPOCH 13/70 =====
+Epoch 13 Loss: 1.5356   F1 score: 0.2565
+-->[EPOCH BEST] New Best F1 score for Epoch 13
+Fold [5/5] - Epoch [14/70] - Loss: 1.5803: 100%|█| 167/167 [00:29<00:00,  5.73it
+--> Loss for epoch 14 : 1.4355
+
+===== VALIDATION EPOCH 14/70 =====
+Epoch 14 Loss: 1.4469   F1 score: 0.2604
+-->[EPOCH BEST] New Best F1 score for Epoch 14
+Fold [5/5] - Epoch [15/70] - Loss: 1.4136: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 15 : 1.3703
+
+===== VALIDATION EPOCH 15/70 =====
+Epoch 15 Loss: 1.3802   F1 score: 0.2833
+-->[EPOCH BEST] New Best F1 score for Epoch 15
+Fold [5/5] - Epoch [16/70] - Loss: 1.0675: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 16 : 1.3115
+
+===== VALIDATION EPOCH 16/70 =====
+Epoch 16 Loss: 1.3814   F1 score: 0.2877
+-->[EPOCH BEST] New Best F1 score for Epoch 16
+Fold [5/5] - Epoch [17/70] - Loss: 0.9456: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 17 : 1.2424
+
+===== VALIDATION EPOCH 17/70 =====
+Epoch 17 Loss: 1.2535   F1 score: 0.3309
+-->[EPOCH BEST] New Best F1 score for Epoch 17
+Fold [5/5] - Epoch [18/70] - Loss: 1.2314: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 18 : 1.1831
+
+===== VALIDATION EPOCH 18/70 =====
+Epoch 18 Loss: 1.2347   F1 score: 0.3566
+-->[EPOCH BEST] New Best F1 score for Epoch 18
+Fold [5/5] - Epoch [19/70] - Loss: 0.9640: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 19 : 1.0988
+
+===== VALIDATION EPOCH 19/70 =====
+Epoch 19 Loss: 1.2103   F1 score: 0.3999
+-->[EPOCH BEST] New Best F1 score for Epoch 19
+Fold [5/5] - Epoch [20/70] - Loss: 1.0879: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 20 : 1.0414
+
+===== VALIDATION EPOCH 20/70 =====
+Epoch 20 Loss: 1.0748   F1 score: 0.4067
+-->[EPOCH BEST] New Best F1 score for Epoch 20
+Fold [5/5] - Epoch [21/70] - Loss: 1.0845: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 21 : 0.9810
+
+===== VALIDATION EPOCH 21/70 =====
+Epoch 21 Loss: 0.9829   F1 score: 0.4576
+-->[EPOCH BEST] New Best F1 score for Epoch 21
+Fold [5/5] - Epoch [22/70] - Loss: 0.9103: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 22 : 0.9092
+
+===== VALIDATION EPOCH 22/70 =====
+Epoch 22 Loss: 1.0197   F1 score: 0.4731
+-->[EPOCH BEST] New Best F1 score for Epoch 22
+Fold [5/5] - Epoch [23/70] - Loss: 0.9125: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 23 : 0.8555
+
+===== VALIDATION EPOCH 23/70 =====
+Epoch 23 Loss: 0.8726   F1 score: 0.5221
+-->[EPOCH BEST] New Best F1 score for Epoch 23
+Fold [5/5] - Epoch [24/70] - Loss: 0.8957: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 24 : 0.8063
+
+===== VALIDATION EPOCH 24/70 =====
+Epoch 24 Loss: 0.9199   F1 score: 0.5177
+Fold [5/5] - Epoch [25/70] - Loss: 0.4847: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 25 : 0.7506
+
+===== VALIDATION EPOCH 25/70 =====
+Epoch 25 Loss: 0.8777   F1 score: 0.4877
+Fold [5/5] - Epoch [26/70] - Loss: 0.7018: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 26 : 0.7027
+
+===== VALIDATION EPOCH 26/70 =====
+Epoch 26 Loss: 0.7078   F1 score: 0.6135
+-->[EPOCH BEST] New Best F1 score for Epoch 26
+Fold [5/5] - Epoch [27/70] - Loss: 0.5051: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 27 : 0.6493
+
+===== VALIDATION EPOCH 27/70 =====
+Epoch 27 Loss: 0.6652   F1 score: 0.6189
+-->[EPOCH BEST] New Best F1 score for Epoch 27
+Fold [5/5] - Epoch [28/70] - Loss: 0.7200: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 28 : 0.6154
+
+===== VALIDATION EPOCH 28/70 =====
+Epoch 28 Loss: 0.7200   F1 score: 0.5938
+Fold [5/5] - Epoch [29/70] - Loss: 0.6174: 100%|█| 167/167 [00:26<00:00,  6.21it
+--> Loss for epoch 29 : 0.5793
+
+===== VALIDATION EPOCH 29/70 =====
+Epoch 29 Loss: 0.6204   F1 score: 0.6484
+-->[EPOCH BEST] New Best F1 score for Epoch 29
+Fold [5/5] - Epoch [30/70] - Loss: 0.4696: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 30 : 0.5475
+
+===== VALIDATION EPOCH 30/70 =====
+Epoch 30 Loss: 0.5233   F1 score: 0.7147
+-->[EPOCH BEST] New Best F1 score for Epoch 30
+Fold [5/5] - Epoch [31/70] - Loss: 0.3783: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 31 : 0.5210
+
+===== VALIDATION EPOCH 31/70 =====
+Epoch 31 Loss: 0.5337   F1 score: 0.7021
+Fold [5/5] - Epoch [32/70] - Loss: 0.4565: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 32 : 0.4855
+
+===== VALIDATION EPOCH 32/70 =====
+Epoch 32 Loss: 0.5523   F1 score: 0.7102
+Fold [5/5] - Epoch [33/70] - Loss: 0.3533: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 33 : 0.4528
+
+===== VALIDATION EPOCH 33/70 =====
+Epoch 33 Loss: 0.6009   F1 score: 0.6522
+Fold [5/5] - Epoch [34/70] - Loss: 0.4620: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 34 : 0.4316
+
+===== VALIDATION EPOCH 34/70 =====
+Epoch 34 Loss: 0.4462   F1 score: 0.7608
+-->[EPOCH BEST] New Best F1 score for Epoch 34
+Fold [5/5] - Epoch [35/70] - Loss: 0.3537: 100%|█| 167/167 [00:26<00:00,  6.22it
+--> Loss for epoch 35 : 0.4052
+
+===== VALIDATION EPOCH 35/70 =====
+Epoch 35 Loss: 0.4958   F1 score: 0.7378
+Fold [5/5] - Epoch [36/70] - Loss: 0.4202: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 36 : 0.3857
+
+===== VALIDATION EPOCH 36/70 =====
+Epoch 36 Loss: 0.4306   F1 score: 0.7942
+-->[EPOCH BEST] New Best F1 score for Epoch 36
+Fold [5/5] - Epoch [37/70] - Loss: 0.4481: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 37 : 0.3679
+
+===== VALIDATION EPOCH 37/70 =====
+Epoch 37 Loss: 0.4427   F1 score: 0.7560
+Fold [5/5] - Epoch [38/70] - Loss: 0.3664: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 38 : 0.3484
+
+===== VALIDATION EPOCH 38/70 =====
+Epoch 38 Loss: 0.3854   F1 score: 0.8165
+-->[EPOCH BEST] New Best F1 score for Epoch 38
+Fold [5/5] - Epoch [39/70] - Loss: 0.5200: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 39 : 0.3237
+
+===== VALIDATION EPOCH 39/70 =====
+Epoch 39 Loss: 0.3567   F1 score: 0.8134
+Fold [5/5] - Epoch [40/70] - Loss: 0.4119: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 40 : 0.3191
+
+===== VALIDATION EPOCH 40/70 =====
+Epoch 40 Loss: 0.5089   F1 score: 0.7273
+Fold [5/5] - Epoch [41/70] - Loss: 0.3043: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 41 : 0.2979
+
+===== VALIDATION EPOCH 41/70 =====
+Epoch 41 Loss: 0.3112   F1 score: 0.8483
+-->[EPOCH BEST] New Best F1 score for Epoch 41
+Fold [5/5] - Epoch [42/70] - Loss: 0.2337: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 42 : 0.2868
+
+===== VALIDATION EPOCH 42/70 =====
+Epoch 42 Loss: 0.3876   F1 score: 0.8208
+Fold [5/5] - Epoch [43/70] - Loss: 0.2243: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 43 : 0.2696
+
+===== VALIDATION EPOCH 43/70 =====
+Epoch 43 Loss: 0.3430   F1 score: 0.8297
+Fold [5/5] - Epoch [44/70] - Loss: 0.3796: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 44 : 0.2519
+
+===== VALIDATION EPOCH 44/70 =====
+Epoch 44 Loss: 0.3075   F1 score: 0.8568
+-->[EPOCH BEST] New Best F1 score for Epoch 44
+Fold [5/5] - Epoch [45/70] - Loss: 0.1988: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 45 : 0.2404
+
+===== VALIDATION EPOCH 45/70 =====
+Epoch 45 Loss: 0.3109   F1 score: 0.8526
+Fold [5/5] - Epoch [46/70] - Loss: 0.2791: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 46 : 0.2288
+
+===== VALIDATION EPOCH 46/70 =====
+Epoch 46 Loss: 0.3187   F1 score: 0.8300
+Fold [5/5] - Epoch [47/70] - Loss: 0.2019: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 47 : 0.2212
+
+===== VALIDATION EPOCH 47/70 =====
+Epoch 47 Loss: 0.2601   F1 score: 0.8948
+-->[EPOCH BEST] New Best F1 score for Epoch 47
+Fold [5/5] - Epoch [48/70] - Loss: 0.1658: 100%|█| 167/167 [00:26<00:00,  6.22it
+--> Loss for epoch 48 : 0.2059
+
+===== VALIDATION EPOCH 48/70 =====
+Epoch 48 Loss: 0.3148   F1 score: 0.8651
+Fold [5/5] - Epoch [49/70] - Loss: 0.2452: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 49 : 0.1990
+
+===== VALIDATION EPOCH 49/70 =====
+Epoch 49 Loss: 0.2234   F1 score: 0.9005
+-->[EPOCH BEST] New Best F1 score for Epoch 49
+Fold [5/5] - Epoch [50/70] - Loss: 0.2649: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 50 : 0.1834
+
+===== VALIDATION EPOCH 50/70 =====
+Epoch 50 Loss: 0.2577   F1 score: 0.8938
+Fold [5/5] - Epoch [51/70] - Loss: 0.2051: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 51 : 0.1853
+
+===== VALIDATION EPOCH 51/70 =====
+Epoch 51 Loss: 0.2319   F1 score: 0.8978
+Fold [5/5] - Epoch [52/70] - Loss: 0.3699: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 52 : 0.1798
+
+===== VALIDATION EPOCH 52/70 =====
+Epoch 52 Loss: 0.2489   F1 score: 0.8921
+Fold [5/5] - Epoch [53/70] - Loss: 0.1349: 100%|█| 167/167 [00:26<00:00,  6.22it
+--> Loss for epoch 53 : 0.1696
+
+===== VALIDATION EPOCH 53/70 =====
+Epoch 53 Loss: 0.2722   F1 score: 0.8673
+Fold [5/5] - Epoch [54/70] - Loss: 0.4178: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 54 : 0.1600
+
+===== VALIDATION EPOCH 54/70 =====
+Epoch 54 Loss: 0.2374   F1 score: 0.9056
+-->[EPOCH BEST] New Best F1 score for Epoch 54
+Fold [5/5] - Epoch [55/70] - Loss: 0.2202: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 55 : 0.1607
+
+===== VALIDATION EPOCH 55/70 =====
+Epoch 55 Loss: 0.2032   F1 score: 0.9093
+-->[EPOCH BEST] New Best F1 score for Epoch 55
+Fold [5/5] - Epoch [56/70] - Loss: 0.2685: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 56 : 0.1551
+
+===== VALIDATION EPOCH 56/70 =====
+Epoch 56 Loss: 0.2462   F1 score: 0.8958
+Fold [5/5] - Epoch [57/70] - Loss: 0.1616: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 57 : 0.1463
+
+===== VALIDATION EPOCH 57/70 =====
+Epoch 57 Loss: 0.2189   F1 score: 0.9042
+Fold [5/5] - Epoch [58/70] - Loss: 0.1034: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 58 : 0.1400
+
+===== VALIDATION EPOCH 58/70 =====
+Epoch 58 Loss: 0.2092   F1 score: 0.9039
+Fold [5/5] - Epoch [59/70] - Loss: 0.1823: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 59 : 0.1305
+
+===== VALIDATION EPOCH 59/70 =====
+Epoch 59 Loss: 0.2184   F1 score: 0.9043
+Fold [5/5] - Epoch [60/70] - Loss: 0.0685: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 60 : 0.1310
+
+===== VALIDATION EPOCH 60/70 =====
+Epoch 60 Loss: 0.2459   F1 score: 0.9007
+Fold [5/5] - Epoch [61/70] - Loss: 0.0551: 100%|█| 167/167 [00:26<00:00,  6.23it
+--> Loss for epoch 61 : 0.1292
+
+===== VALIDATION EPOCH 61/70 =====
+Epoch 61 Loss: 0.1713   F1 score: 0.9299
+-->[EPOCH BEST] New Best F1 score for Epoch 61
+Fold [5/5] - Epoch [62/70] - Loss: 0.0753: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 62 : 0.1268
+
+===== VALIDATION EPOCH 62/70 =====
+Epoch 62 Loss: 0.1539   F1 score: 0.9339
+-->[EPOCH BEST] New Best F1 score for Epoch 62
+Fold [5/5] - Epoch [63/70] - Loss: 0.1216: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 63 : 0.1239
+
+===== VALIDATION EPOCH 63/70 =====
+Epoch 63 Loss: 0.1628   F1 score: 0.9346
+-->[EPOCH BEST] New Best F1 score for Epoch 63
+Fold [5/5] - Epoch [64/70] - Loss: 0.0269: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 64 : 0.1140
+
+===== VALIDATION EPOCH 64/70 =====
+Epoch 64 Loss: 0.1641   F1 score: 0.9319
+Fold [5/5] - Epoch [65/70] - Loss: 0.3648: 100%|█| 167/167 [00:26<00:00,  6.24it
+--> Loss for epoch 65 : 0.1161
+
+===== VALIDATION EPOCH 65/70 =====
+Epoch 65 Loss: 0.2537   F1 score: 0.8783
+Fold [5/5] - Epoch [66/70] - Loss: 0.0803: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 66 : 0.1136
+
+===== VALIDATION EPOCH 66/70 =====
+Epoch 66 Loss: 0.2289   F1 score: 0.8912
+Fold [5/5] - Epoch [67/70] - Loss: 0.0526: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 67 : 0.1106
+
+===== VALIDATION EPOCH 67/70 =====
+Epoch 67 Loss: 0.1694   F1 score: 0.9384
+-->[EPOCH BEST] New Best F1 score for Epoch 67
+Fold [5/5] - Epoch [68/70] - Loss: 0.1942: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 68 : 0.1051
+
+===== VALIDATION EPOCH 68/70 =====
+Epoch 68 Loss: 0.2554   F1 score: 0.8758
+Fold [5/5] - Epoch [69/70] - Loss: 0.1185: 100%|█| 167/167 [00:26<00:00,  6.25it
+--> Loss for epoch 69 : 0.0977
+
+===== VALIDATION EPOCH 69/70 =====
+Epoch 69 Loss: 0.1730   F1 score: 0.9341
+Fold [5/5] - Epoch [70/70] - Loss: 0.0940: 100%|█| 167/167 [00:26<00:00,  6.26it
+--> Loss for epoch 70 : 0.1064
+
+===== VALIDATION EPOCH 70/70 =====
+Epoch 70 Loss: 0.1235   F1 score: 0.9507
+-->[EPOCH BEST] New Best F1 score for Epoch 70
+
+==================== TEST FOLD 5/5 ====================
+Fold 5 Loss: 0.3180  F1 score: 0.8775
