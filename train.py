@@ -160,7 +160,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
             print(f"--> Loss for epoch {epoch + 1} : {(total_loss_train / num_iterations):.4f}")
 
-            print(f"\n" + "=" * 5 + f" VALIDATION FOLD {fold + 1}/{FOLDS} " + "=" * 5)
+            print(f"\n" + "=" * 5 + f" VALIDATION EPOCH {epoch + 1}/{FOLDS} " + "=" * 5)
 
             model.eval()
             list_prediction = []
