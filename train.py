@@ -178,7 +178,7 @@ def train(Dataset: Type[GTSRBDataset]):
                     list_label.extend(labels_val.cpu().numpy())
 
             f1_score_epoch = f1_score(list_label, list_prediction, average="macro")
-            print(f"Epoch {epoch + 1} Loss: {(total_loss_validation / len(validation_dataloader)):.4f}   Accuracy: {f1_score_epoch:.4f}")
+            print(f"Epoch {epoch + 1} Loss: {(total_loss_validation / len(validation_dataloader)):.4f}   F1 score: {f1_score_epoch:.4f}")
 
             is_best = f1_score_epoch > best_f1_score
             if is_best:
