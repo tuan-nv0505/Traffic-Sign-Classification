@@ -56,3 +56,13 @@ python train.py \
 --logging /your_path/tensorboard \
 --deep 4 \
 --device cuda
+```
+
+### Acknowledgments
+This project is based on the architecture of MambaTSR, a pioneering research by 1024AILab on State Space Models (SSMs) for traffic sign recognition.
+
+I have implemented key modifications to optimize the model specifically for the Traffic Sign Classification task:
+
+Parameter Optimization: Compressed the model into an ultra-lightweight version with only 197k parameters.
+
+Flexibility & Accessibility: Removed the strict dependency on CUDA, enabling the model to run efficiently across various hardware platforms (including CPU-only environments) while maintaining impressive accuracy.
