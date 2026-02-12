@@ -30,10 +30,6 @@ TRANSFORMS = transforms.Compose([
     transforms.ToTensor(),
 ])
 
-torch.manual_seed(42)
-np.random.seed(42)
-torch.cuda.manual_seed_all(42)
-
 
 def train(Dataset: Type[GTSRBDataset]):
     train_dataset = Dataset(root=TRAIN_DATA, transforms=TRANSFORMS, train=True)
@@ -242,4 +238,7 @@ def train(Dataset: Type[GTSRBDataset]):
 
 
 if __name__ == '__main__':
+    torch.manual_seed(42)
+    np.random.seed(42)
+    torch.cuda.manual_seed_all(42)
     train(GTSRBDataset)

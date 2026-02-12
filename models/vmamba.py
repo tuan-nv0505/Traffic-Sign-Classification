@@ -117,7 +117,6 @@ def selective_scan_v2(
     return cross_merge(torch.stack(ys, dim=-1), H, W)
 
 
-
 class SS2D(nn.Module):
     def __init__(self,
                  # basic dims ===========
@@ -388,7 +387,7 @@ class VSSBlock(nn.Module):
     ):
         super().__init__()
         self.norm = norm_layer(hidden_dim)
-        self.op = SS2D(
+        self.ss2d = SS2D(
             d_model=hidden_dim,
             d_state=ssm_d_state,
             ssm_ratio=ssm_ratio,
@@ -423,9 +422,11 @@ class VSSBlock(nn.Module):
             )
 
     def forward(self, input: torch.Tensor):
-        x = input + self.drop_path(self.op(self.norm(input.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)))
+        x = self.norm(input.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
+        x = input + self.drop_path(self.ss2d(x))
         if self.mlp_branch:
-            x = x + self.drop_path(self.mlp(self.norm2(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2))) # FFN
+            x = self.norm2(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
+            x = x + self.drop_path(self.mlp(x))
         return x
 
 def check_parameters(model):

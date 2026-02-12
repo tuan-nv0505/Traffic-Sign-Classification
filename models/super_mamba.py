@@ -20,7 +20,7 @@ class SuperMamba(nn.Module):
     def __init__(self, dims=3, depth=4, num_classes=43):
         super().__init__()
         self.depth = depth
-        self.preembd = ConvNet()
+        self.pre_embd = ConvNet()
         if isinstance(dims, int):
             dims = [int(dims * 2 ** i_layer) for i_layer in range(self.depth + 1)]
         self.num_features = dims[-1]
@@ -42,8 +42,7 @@ class SuperMamba(nn.Module):
             permute_out=Permute(0, 3, 1, 2),
             avgpool=nn.AdaptiveAvgPool2d(1),
             flatten=nn.Flatten(1),
-            head=nn.Linear(self.num_features, num_classes),
-            dropout=nn.Dropout(p=0.5),
+            head=nn.Linear(self.num_features, num_classes)
         ))
 
         self.apply(self._init_weights)
@@ -58,7 +57,7 @@ class SuperMamba(nn.Module):
             nn.init.constant_(m.weight, 1.0)
 
     def forward(self, x):
-        x = self.preembd(x)
+        x = self.pre_embd(x)
         for layers in self.layers:
             x = layers(x)
         x = self.classifier(x)
