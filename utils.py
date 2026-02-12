@@ -22,62 +22,61 @@ def get_args():
 
     return parser.parse_args()
 
-def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=None, train=True):
+def plot_confusion_matrix(writer, cm, class_names, epoch, fold=None, train=True):
     """
     Returns a matplotlib figure containing the plotted confusion matrix.
 
     Args:
        cm (array, shape = [n, n]): a confusion matrix of integer classes
        class_names (array, shape = [n]): String names of the integer classes
-       mode (string): 'recall' or 'precision'
     """
     cm = cm.astype(float)
 
-    if mode == "recall":
-        # TP / (TP + FN)
-        denom = cm.sum(axis=1, keepdims=True)
-        title = "Confusion Matrix (Recall)"
+    recall_denom = cm.sum(axis=1, keepdims=True)
+    recall_denom[recall_denom == 0] = 1
+    recall = cm / recall_denom
 
-    elif mode == "precision":
-        # TP / (TP + FP)
-        denom = cm.sum(axis=0, keepdims=True)
-        title = "Confusion Matrix (Precision)"
+    precision_denom = cm.sum(axis=0, keepdims=True)
+    precision_denom[precision_denom == 0] = 1
+    precision = cm / precision_denom
 
-    else:
-        raise ValueError("mode phải là 'recall' hoặc 'precision'")
+    f1_diagonal = np.zeros(len(class_names))
+    for i in range(len(class_names)):
+        p = precision[i, i]
+        r = recall[i, i]
+        if (p + r) > 0:
+            f1_diagonal[i] = 2 * (p * r) / (p + r)
 
-    denom[denom == 0] = 1
+    f1_matrix = np.diag(f1_diagonal)
 
-    cm_norm = cm / denom
-    cm_norm = np.round(cm_norm, 2)
-
-    figure = plt.figure(figsize=(20, 20))
-    plt.imshow(cm_norm, interpolation="nearest", cmap="ocean")
-    plt.title(title)
-    plt.colorbar()
+    figure = plt.figure(figsize=(22, 20))
+    plt.imshow(f1_matrix, interpolation="nearest", cmap="GnBu")
+    plt.title("Per-Class F1-Score Matrix")
+    plt.colorbar(label="F1-Score")
 
     tick_marks = np.arange(len(class_names))
-    plt.xticks(tick_marks, class_names, rotation=45)
-    plt.yticks(tick_marks, class_names)
+    plt.xticks(tick_marks, class_names, rotation=90, fontsize=8)
+    plt.yticks(tick_marks, class_names, fontsize=8)
 
-    threshold = cm_norm.max() / 2.0 if cm_norm.max() > 0 else 0.5
-
-    for i in range(cm_norm.shape[0]):
-        for j in range(cm_norm.shape[1]):
-            color = "white" if cm_norm[i, j] > threshold else "black"
-            plt.text(j, i, cm_norm[i, j],
-                     horizontalalignment="center",
-                     color=color)
+    for i in range(len(class_names)):
+        val = np.round(f1_diagonal[i], 2)
+        color = "white" if val > 0.5 else "red"
+        plt.text(i, i, val,
+                 horizontalalignment="center",
+                 verticalalignment="center",
+                 color=color,
+                 fontweight='bold')
 
     plt.tight_layout()
-    plt.ylabel("True label")
-    plt.xlabel("Predicted label")
+    plt.ylabel("True Class")
+    plt.xlabel("Predicted Class")
 
     s1 = f"Fold {fold}/" if fold is not None else ""
     s2 = "Validation" if train else "Test"
+    tag = f"{s1}F1 Score {s2}"
 
-    tag = f"{s1}Confusion Matrix {s2}/{mode}"
     writer.add_figure(tag, figure, epoch)
+    plt.close(figure)
 
 
 def get_mean_and_std(dataset, workers=4):

@@ -202,16 +202,6 @@ def train(Dataset: Type[GTSRBDataset]):
                 cm=confusion_matrix(list_label, list_prediction),
                 class_names=train_dataset.categories,
                 epoch=epoch + 1,
-                mode="precision",
-                fold=fold + 1
-            )
-
-            plot_confusion_matrix(
-                writer=writer,
-                cm=confusion_matrix(list_label, list_prediction),
-                class_names=train_dataset.categories,
-                epoch=epoch + 1,
-                mode="recall",
                 fold=fold + 1
             )
 
@@ -256,17 +246,6 @@ def train(Dataset: Type[GTSRBDataset]):
             cm=confusion_matrix(list_label, list_prediction),
             class_names=train_dataset.categories,
             epoch=EPOCHS,
-            mode="precision",
-            train=False,
-            fold=fold + 1
-        )
-
-        plot_confusion_matrix(
-            writer=writer,
-            cm=confusion_matrix(list_label, list_prediction),
-            class_names=train_dataset.categories,
-            epoch=EPOCHS,
-            mode="recall",
             train=False,
             fold=fold + 1
         )
