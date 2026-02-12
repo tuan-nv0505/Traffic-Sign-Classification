@@ -25,38 +25,39 @@ TRAINED = args.trained
 LOGGING = args.logging
 LOAD_CHECKPOINT = args.load_checkpoint
 
-MEAN, STD = get_mean_and_std(
-    GTSRBDataset(
-        root=PATH_DATA,
-        transforms=transforms.Compose([
-            transforms.Resize((32, 32))
-        ]),
-        train=True
-    ),
-    workers=WORKERS
-)
-
-TRAIN_TRANSFORMS = transforms.Compose([
-    transforms.Resize((32, 32)),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2),
-    transforms.RandomAffine(
-        scale=(0.85, 1.15),
-        degrees=(-6, 6),
-        translate=(0.15, 0.15),
-    ),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=MEAN, std=STD)
-])
-
-TEST_TRANSFORMS = transforms.Compose([
-    transforms.Resize((32, 32)),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=MEAN, std=STD)
-])
-
 
 def train(Dataset: Type[GTSRBDataset]):
-    train_dataset = Dataset(root=PATH_DATA, transforms=TRAIN_TRANSFORMS, train=True)
+    mean, std = get_mean_and_std(
+        GTSRBDataset(
+            root=PATH_DATA,
+            transforms=transforms.Compose([
+                transforms.Resize((32, 32)),
+                transforms.ToTensor()
+            ]),
+            train=True
+        ),
+        workers=WORKERS
+    )
+
+    train_transforms = transforms.Compose([
+        transforms.Resize((32, 32)),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2),
+        transforms.RandomAffine(
+            scale=(0.85, 1.15),
+            degrees=(-6, 6),
+            translate=(0.15, 0.15),
+        ),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=mean, std=std)
+    ])
+
+    test_transforms = transforms.Compose([
+        transforms.Resize((32, 32)),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=mean, std=std)
+    ])
+
+    train_dataset = Dataset(root=PATH_DATA, transforms=train_transforms, train=True)
     indices = np.arange(len(train_dataset))
     labels = np.array(train_dataset.labels)
     skf = StratifiedKFold(n_splits=FOLDS, shuffle=True, random_state=42)
@@ -73,7 +74,7 @@ def train(Dataset: Type[GTSRBDataset]):
         if len(trained_folds) > 0:
             start_fold = max(trained_folds) - 1
 
-    test_dataset = Dataset(root=PATH_DATA, transforms=TEST_TRANSFORMS, train=False)
+    test_dataset = Dataset(root=PATH_DATA, transforms=test_transforms, train=False)
     test_dataloader = DataLoader(
         dataset=test_dataset,
         batch_size=BATCH_SIZE,
