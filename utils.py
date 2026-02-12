@@ -1,7 +1,9 @@
 from argparse import ArgumentParser
-
 import numpy as np
+import torch
 from matplotlib import pyplot as plt
+from torch.utils.data import DataLoader
+from torchvision import transforms
 
 
 def get_args():
@@ -11,8 +13,7 @@ def get_args():
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--device", type=str, default="cpu")
-    parser.add_argument("--train_data", type=str, default="data/gtsrb")
-    parser.add_argument("--test_data", type=str, default="data/gtsrb")
+    parser.add_argument("--path_data", type=str, default="data/gtsrb")
     parser.add_argument("--folds", type=int, default=5)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--trained", type=str, default="trained")
@@ -77,3 +78,33 @@ def plot_confusion_matrix(writer, cm, class_names, epoch, mode="recall", fold=No
 
     tag = f"{s1}Confusion Matrix {s2}/{mode}"
     writer.add_figure(tag, figure, epoch)
+
+
+def get_mean_and_std(dataset, workers=4):
+    data_loader = DataLoader(
+        dataset,
+        batch_size=64,
+        shuffle=False,
+        num_workers=workers
+    )
+
+    n_images = 0
+    mean_x = torch.zeros(3)
+    mean_x_squared = torch.zeros(3)
+
+    for images, _ in data_loader:
+        b = images.size(0)
+
+        batch_mean = torch.mean(images, dim=[0, 2, 3])
+        batch_mean_sq = torch.mean(images ** 2, dim=[0, 2, 3])
+
+        mean_x = (mean_x * n_images + batch_mean * b) / (n_images + b)
+        mean_x_squared = (mean_x_squared * n_images + batch_mean_sq * b) / (n_images + b)
+
+        n_images += b
+
+    # std = sqrt(E[X^2] - (E[X])^2)
+    std = torch.sqrt(mean_x_squared - mean_x ** 2)
+
+    return tuple(mean_x.tolist()), tuple(std.tolist())
+

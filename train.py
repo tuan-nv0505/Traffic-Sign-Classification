@@ -1,14 +1,14 @@
 import os
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import confusion_matrix, f1_score
 from torch.utils.data import DataLoader, Subset
 import torch
 from typing import Type
 from torchvision import transforms
 import numpy as np
-from sklearn.model_selection import StratifiedKFold, KFold
+from sklearn.model_selection import StratifiedKFold
 from datasets.gtsrb_dataset import GTSRBDataset
 from models.super_mamba import SuperMamba
-from utils import get_args, plot_confusion_matrix
+from utils import get_args, plot_confusion_matrix, get_mean_and_std
 from tqdm.autonotebook import tqdm
 from torch.utils.tensorboard import SummaryWriter
 
@@ -18,21 +18,45 @@ EPOCHS = args.epochs
 BATCH_SIZE = args.batch
 LR = args.lr
 DEVICE = torch.device(args.device)
-TRAIN_DATA = args.train_data
-TEST_DATA = args.test_data
+PATH_DATA = args.path_data
 FOLDS = args.folds
 WORKERS = args.workers
 TRAINED = args.trained
 LOGGING = args.logging
 LOAD_CHECKPOINT = args.load_checkpoint
-TRANSFORMS = transforms.Compose([
+
+MEAN, STD = get_mean_and_std(
+    GTSRBDataset(
+        root=PATH_DATA,
+        transforms=transforms.Compose([
+            transforms.Resize((32, 32))
+        ]),
+        train=True
+    ),
+    workers=WORKERS
+)
+
+TRAIN_TRANSFORMS = transforms.Compose([
+    transforms.Resize((32, 32)),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),
+    transforms.RandomAffine(
+        scale=(0.85, 1.15),
+        degrees=(-6, 6),
+        translate=(0.15, 0.15),
+    ),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=MEAN, std=STD)
+])
+
+TEST_TRANSFORMS = transforms.Compose([
     transforms.Resize((32, 32)),
     transforms.ToTensor(),
+    transforms.Normalize(mean=MEAN, std=STD)
 ])
 
 
 def train(Dataset: Type[GTSRBDataset]):
-    train_dataset = Dataset(root=TRAIN_DATA, transforms=TRANSFORMS, train=True)
+    train_dataset = Dataset(root=PATH_DATA, transforms=TRAIN_TRANSFORMS, train=True)
     indices = np.arange(len(train_dataset))
     labels = np.array(train_dataset.labels)
     skf = StratifiedKFold(n_splits=FOLDS, shuffle=True, random_state=42)
@@ -49,7 +73,7 @@ def train(Dataset: Type[GTSRBDataset]):
         if len(trained_folds) > 0:
             start_fold = max(trained_folds) - 1
 
-    test_dataset = Dataset(root=TEST_DATA, transforms=TRANSFORMS, train=False)
+    test_dataset = Dataset(root=PATH_DATA, transforms=TEST_TRANSFORMS, train=False)
     test_dataloader = DataLoader(
         dataset=test_dataset,
         batch_size=BATCH_SIZE,
@@ -57,6 +81,9 @@ def train(Dataset: Type[GTSRBDataset]):
         num_workers=WORKERS,
         drop_last=False,
     )
+
+    final_best_checkpoint = os.path.join(TRAINED, "final_best_check_point.pth")
+    final_best_f1_score = 0
 
     for fold in range(start_fold, FOLDS):
         print(f"\n" + "=" * 20 + f" TRAIN FOLD {fold + 1}/{FOLDS} " + "=" * 20)
@@ -87,20 +114,20 @@ def train(Dataset: Type[GTSRBDataset]):
         optimizer = torch.optim.Adam(model.parameters(), lr=LR)
         criterion = torch.nn.CrossEntropyLoss()
 
-        checkpoint_path = os.path.join(fold_trained_path, "checkpoint.pth")
-        best_checkpoint_path = os.path.join(fold_trained_path, "best_checkpoint.pth")
+        checkpoint_path_fold = os.path.join(fold_trained_path, "checkpoint.pth")
+        best_checkpoint_path_fold = os.path.join(fold_trained_path, "best_checkpoint.pth")
 
         start_epoch = 0
-        best_accuracy = 0
+        best_f1_score = 0
 
-        if os.path.exists(checkpoint_path) and LOAD_CHECKPOINT:
-            if os.path.exists(checkpoint_path):
+        if os.path.exists(checkpoint_path_fold) and LOAD_CHECKPOINT:
+            if os.path.exists(checkpoint_path_fold):
                 try:
-                    checkpoint = torch.load(checkpoint_path, map_location=DEVICE, weights_only=True)
+                    checkpoint = torch.load(checkpoint_path_fold, map_location=DEVICE, weights_only=True)
                     model.load_state_dict(checkpoint["model_state_dict"])
                     optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
                     start_epoch = checkpoint["epoch"]
-                    best_accuracy = checkpoint.get("best_accuracy", 0)
+                    best_f1_score = checkpoint.get("best_f1_score", 0)
                     print(f"Resume Fold {fold + 1} from epoch {start_epoch + 1}")
                 except Exception as ex:
                     print(f"Load checkpoint failed for fold {fold + 1}: {ex}")
@@ -130,7 +157,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 )
                 total_loss_train += loss.item()
                 writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
-            print(f"--> Loss for epoch {epoch} : {(total_loss_train / num_iterations):.4f}")
+            print(f"--> Loss for epoch {epoch + 1} : {(total_loss_train / num_iterations):.4f}")
 
             print(f"\n" + "=" * 5 + f" VALIDATION FOLD {fold + 1}/{FOLDS} " + "=" * 5)
 
@@ -149,26 +176,26 @@ def train(Dataset: Type[GTSRBDataset]):
                     list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
                     list_label.extend(labels_val.cpu().numpy())
 
-            accuracy = accuracy_score(list_label, list_prediction)
-            print(f"Fold {fold + 1} - Epoch {epoch + 1} Loss: {(total_loss_validation / len(validation_dataloader)):.4f}   Accuracy: {accuracy:.4f}")
+            f1_score_epoch = f1_score(list_label, list_prediction, average="macro")
+            print(f"Epoch {epoch + 1} Loss: {(total_loss_validation / len(validation_dataloader)):.4f}   Accuracy: {f1_score_epoch:.4f}")
 
-            is_best = accuracy > best_accuracy
+            is_best = f1_score_epoch > best_f1_score
             if is_best:
-                best_accuracy = accuracy
+                best_f1_score = f1_score_epoch
 
             checkpoint = {
                 "model_state_dict": model.state_dict(),
                 "epoch": epoch + 1,
                 "optimizer_state_dict": optimizer.state_dict(),
-                "best_accuracy": best_accuracy,
+                "best_f1_score": best_f1_score,
             }
 
-            torch.save(checkpoint, checkpoint_path)
+            torch.save(checkpoint, checkpoint_path_fold)
             if is_best:
-                torch.save(checkpoint, best_checkpoint_path)
-                print(f"--> New Best Accuracy for Fold {fold + 1}")
+                torch.save(checkpoint, best_checkpoint_path_fold)
+                print(f"-->[EPOCH BEST] New Best F1 score for Epoch {epoch + 1}")
 
-            writer.add_scalar(f"Fold {fold + 1}/Validation/Accuracy", accuracy, epoch + 1)
+            writer.add_scalar(f"Fold {fold + 1}/Validation/F1 score", f1_score_epoch, epoch + 1)
             plot_confusion_matrix(
                 writer=writer,
                 cm=confusion_matrix(list_label, list_prediction),
@@ -189,7 +216,7 @@ def train(Dataset: Type[GTSRBDataset]):
 
         print(f"\n" + "=" * 20 + f" TEST FOLD {fold + 1}/{FOLDS} " + "=" * 20)
 
-        best_checkpoint = torch.load(best_checkpoint_path, map_location=DEVICE)
+        best_checkpoint = torch.load(best_checkpoint_path_fold, map_location=DEVICE)
         model.load_state_dict(best_checkpoint["model_state_dict"])
 
         model.eval()
@@ -207,9 +234,21 @@ def train(Dataset: Type[GTSRBDataset]):
                 list_prediction.extend(torch.argmax(outputs, dim=1).cpu().numpy())
                 list_label.extend(labels_val.cpu().numpy())
 
-        accuracy = accuracy_score(list_label, list_prediction)
+        f1_score_fold = f1_score(list_label, list_prediction, average="macro")
+        if f1_score_fold > final_best_f1_score:
+            final_best_f1_score = f1_score_fold
+            torch.save({
+                "model_state_dict": model.state_dict(),
+                "f1_score": f1_score_fold,
+                "fold": fold + 1
+            }, final_best_checkpoint)
+            print(f"--> [GLOBAL BEST] New Best checkpoint found in Fold {fold + 1}!")
+
         print(
-            f"Fold {fold + 1} Loss: {(total_loss_test / len(test_dataloader)):.4f}  Accuracy: {accuracy:.4f}")
+            f"Fold {fold + 1} "
+            f"Loss: {(total_loss_test / len(test_dataloader)):.4f}  "
+            f"F1 score: {f1_score_fold:.4f}"
+        )
 
         plot_confusion_matrix(
             writer=writer,

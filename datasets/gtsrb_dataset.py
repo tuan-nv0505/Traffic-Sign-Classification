@@ -1,8 +1,10 @@
 import os
+
+import torch
 from torch.utils import data
 import matplotlib.pyplot as plt
 from PIL import Image
-from torchvision.transforms import Compose, ToTensor
+from torchvision.transforms import Compose, ToTensor, transforms, ToPILImage, Resize
 import pandas as pd
 
 class GTSRBDataset(data.Dataset):
@@ -51,8 +53,5 @@ class GTSRBDataset(data.Dataset):
 
 if __name__ == '__main__':
     path = "../data/gtsrb/"
-    transforms = Compose([
-        ToTensor()
-    ])
-    dataset = GTSRBDataset(root=path, transforms=transforms, train=False)
+
 
