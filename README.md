@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-    <img src="images/f1_score_test.png" width="30">
+    <img src="images/f1_score_test.png" width="300">
     <img src="images/f1_score_validation.png" width="300">
 </p>
 
