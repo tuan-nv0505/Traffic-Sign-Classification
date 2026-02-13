@@ -152,7 +152,6 @@ def train(Dataset: Type[GTSRBDataset]):
                 loss.backward()
                 optimizer.step()
 
-                print()
                 progress_bar.set_description(
                     f"Fold [{fold + 1}/{FOLDS}] - "
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
@@ -196,7 +195,9 @@ def train(Dataset: Type[GTSRBDataset]):
             torch.save(checkpoint, checkpoint_path_fold)
             if is_best:
                 torch.save(checkpoint, best_checkpoint_path_fold)
-                print(f"-->[EPOCH BEST] New Best F1 score for Epoch {epoch + 1}")
+                print(f"-->[EPOCH BEST] New Best F1 score for Epoch {epoch + 1}\n")
+            else:
+                print()
 
             writer.add_scalar(f"Fold {fold + 1}/Validation/F1 score", f1_score_epoch, epoch + 1)
             plot_confusion_matrix(
