@@ -153,7 +153,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 optimizer.step()
 
                 progress_bar.set_description(
-                    f"Fold [{fold + 1}/{FOLDS}] - "
+                    f"\nFold [{fold + 1}/{FOLDS}] - "
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
                     f"Loss: {loss.item():.4f}"
                 )
@@ -161,7 +161,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 writer.add_scalar(f"Fold {fold + 1}/Train/Loss", loss.item(), epoch * num_iterations + i)
             print(f"--> Loss for epoch {epoch + 1} : {(total_loss_train / num_iterations):.4f}")
 
-            print(f"\n" + "=" * 5 + f" VALIDATION EPOCH {epoch + 1}/{EPOCHS} " + "=" * 5)
+            print("=" * 5 + f" VALIDATION EPOCH {epoch + 1}/{EPOCHS} " + "=" * 5)
 
             model.eval()
             list_prediction = []
