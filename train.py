@@ -42,12 +42,12 @@ def train(Dataset: Type[GTSRBDataset]):
 
     train_transforms = transforms.Compose([
         transforms.Resize(SIZE),
-        transforms.ColorJitter(brightness=0.2, contrast=0.2),
-        transforms.RandomAffine(
-            scale=(0.85, 1.15),
-            degrees=(-5, 5),
-            translate=(0.15, 0.15),
-        ),
+        # transforms.ColorJitter(brightness=0.2, contrast=0.2),
+        # transforms.RandomAffine(
+        #     scale=(0.85, 1.15),
+        #     degrees=(-5, 5),
+        #     translate=(0.15, 0.15),
+        # ),
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std)
     ])
@@ -84,7 +84,7 @@ def train(Dataset: Type[GTSRBDataset]):
         drop_last=False,
     )
 
-    final_best_checkpoint = os.path.join(TRAINED, "final_best_check_point.pth")
+    final_best_checkpoint = os.path.join(TRAINED, "final_best_checkpoint.pth")
     final_best_f1_score = 0
 
     for fold in range(start_fold, FOLDS):
