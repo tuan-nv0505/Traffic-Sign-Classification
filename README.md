@@ -50,7 +50,8 @@ pip install -r requirements.txt
 
 ```bash
 python train.py \
---epochs 70 \
+python train.py \
+--epochs 60 \
 --batch 64 \
 --load_checkpoint \
 --workers 4 \
@@ -59,7 +60,8 @@ python train.py \
 --trained /your_path/trained \
 --logging /your_path/tensorboard \
 --deep 4 \
---device cuda
+--device cuda \
+--size 48 48
 ```
 
 ### Acknowledgments
