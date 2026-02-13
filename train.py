@@ -25,13 +25,14 @@ TRAINED = args.trained
 LOGGING = args.logging
 LOAD_CHECKPOINT = args.load_checkpoint
 DEEP = args.deep
+SIZE = args.size
 
 def train(Dataset: Type[GTSRBDataset]):
     mean, std = get_mean_and_std(
         GTSRBDataset(
             root=PATH_DATA,
             transforms=transforms.Compose([
-                transforms.Resize((32, 32)),
+                transforms.Resize(SIZE),
                 transforms.ToTensor()
             ]),
             train=True
@@ -40,7 +41,7 @@ def train(Dataset: Type[GTSRBDataset]):
     )
 
     train_transforms = transforms.Compose([
-        transforms.Resize((32, 32)),
+        transforms.Resize(SIZE),
         transforms.ColorJitter(brightness=0.2, contrast=0.2),
         transforms.RandomAffine(
             scale=(0.85, 1.15),
@@ -52,7 +53,7 @@ def train(Dataset: Type[GTSRBDataset]):
     ])
 
     test_transforms = transforms.Compose([
-        transforms.Resize((32, 32)),
+        transforms.Resize(SIZE),
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std)
     ])

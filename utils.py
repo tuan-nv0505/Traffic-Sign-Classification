@@ -20,8 +20,13 @@ def get_args():
     parser.add_argument("--logging", type=str, default="tensorboard")
     parser.add_argument("--load_checkpoint", action="store_true")
     parser.add_argument("--deep", type=int, default=4)
+    parser.add_argument("--size", nargs=2, type=int, metavar=("H, W"))
 
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.size:
+        args.size = tuple(map(int, args.size))
+
+    return args
 
 def plot_confusion_matrix(writer, cm, class_names, epoch, fold=None, train=True):
     """
@@ -111,3 +116,6 @@ def get_mean_and_std(dataset, workers=4):
 
     return tuple(mean_x.tolist()), tuple(std.tolist())
 
+if __name__ == '__main__':
+    args = get_args()
+    print(args.size)
