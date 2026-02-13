@@ -1,11 +1,16 @@
+
 <p align="center">
-    <img src="images/architecture.png" width="500">
+    <img src="images/architecture.png" width="600">
 </p>
 
 <p align="center">
-    <img src="images/tensorboard.png" width="500">
+    <img src="images/f1_score_test.png" width="30">
+    <img src="images/f1_score_validation.png" width="300">
 </p>
 
+<p align="center">
+    <img src="images/loss_and_f1_score.png" width="600">
+</p>
 
 ## Mamba For Vision: You Only Need 197k Parameters for Traffic Sign Classification
 
