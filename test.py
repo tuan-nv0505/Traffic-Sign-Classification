@@ -17,12 +17,12 @@ WORKERS = args.workers
 
 def test(path_image):
     checkpoint = torch.load(
-        os.path.join(TRAINED, "final_best_checkpoint.pth"),
+        os.path.join(TRAINED, "fold_1/best_checkpoint.pth"),
         map_location=DEVICE,
         weights_only=True
     )
     state_dict = checkpoint['model_state_dict']
-    model = SuperMamba().to(DEVICE)
+    model = SuperMamba(dims=3, depth=4, num_classes=43).to(DEVICE)
     model.load_state_dict(state_dict)
 
     test_transforms = transforms.Compose([
@@ -47,4 +47,5 @@ def test(path_image):
         img.show()
 
 if __name__ == '__main__':
-    test("./data/gtsrb/Training/00020/00000_00021.ppm")
+    # test("./data/gtsrb/Final_Test/Images/00004.ppm")
+    test("./images/weather_rain_7/1.jpg")
