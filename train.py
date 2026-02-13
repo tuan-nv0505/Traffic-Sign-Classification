@@ -153,7 +153,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 optimizer.step()
 
                 progress_bar.set_description(
-                    f"\nFold [{fold + 1}/{FOLDS}] - "
+                    f"Fold [{fold + 1}/{FOLDS}] - "
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
                     f"Loss: {loss.item():.4f}"
                 )
