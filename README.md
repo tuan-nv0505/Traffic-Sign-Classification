@@ -1,9 +1,9 @@
 <p align="center">
-    <img src="images/architecture.png" width="300">
+    <img src="images/architecture.png">
 </p>
 
 <p align="center">
-    <img src="images/tensorboard.png" width="300">
+    <img src="images/tensorboard.png">
 </p>
 
 
