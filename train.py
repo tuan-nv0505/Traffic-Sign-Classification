@@ -152,6 +152,7 @@ def train(Dataset: Type[GTSRBDataset]):
                 loss.backward()
                 optimizer.step()
 
+                print()
                 progress_bar.set_description(
                     f"Fold [{fold + 1}/{FOLDS}] - "
                     f"Epoch [{epoch + 1}/{EPOCHS}] - "
