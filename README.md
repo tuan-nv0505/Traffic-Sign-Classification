@@ -74,6 +74,6 @@ This project is based on the architecture of MambaTSR, a pioneering research by 
 
 I have implemented key modifications to optimize the model specifically for the Traffic Sign Classification task:
 
-Parameter Optimization: Compressed the model into an ultra-lightweight version with only 197k parameters.
+Parameter Optimization: Compressed the model into an ultra-lightweight version with only 90k parameters.
 
 Flexibility & Accessibility: Removed the strict dependency on CUDA, enabling the model to run efficiently across various hardware platforms (including CPU-only environments) while maintaining impressive accuracy.
